@@ -10,8 +10,13 @@ export const product = {
     },
     {
       name: "description",
-      type: "string",
+      type: "number",
       title: "Product Description",
+    },
+    {
+      name: "price",
+      type: "string",
+      title: "Product Price",
     },
     {
       name: "image",
