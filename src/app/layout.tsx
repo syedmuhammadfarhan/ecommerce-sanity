@@ -1,10 +1,10 @@
 import Navbar from "@/components/Navbar";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Sora } from "next/font/google";
 import { Wrapper } from "@/shared/Wrapper";
 
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Sora({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",

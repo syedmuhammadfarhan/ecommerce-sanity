@@ -13,27 +13,27 @@ export default function Navbar() {
 
   return (
     <>
-      <div className=" bg-red-200 pt-8 pb-2 px-2 flex justify-between">
+      <div className="border pt-8 pb-2 px-2 flex justify-between">
         {/* logo */}
         <div className="py-2">
-          <Image src="/Logo.png" alt="logo" height={1} width={140} />
+          <Image src="/Logo.png" alt="logo" height={4} width={160} />
         </div>
         {/* navbar items */}
-        <div className="bg-green-200 hidden md:flex justify-between items-center gap-x-20">
+        <div className="hidden md:flex justify-between items-center gap-x-20">
           {navItems.map((items: { navList: string; href: string }, i) => {
             return (
-              <div key={i} className="text-md">
+              <div key={i} className="text-lg">
                 <Link href={items.href}>{items.navList}</Link>
               </div>
             );
           })}
         </div>
         {/* search box */}
-        <div className="hidden md:flex justify-center items-center border rounded-lg gap-2">
-          <FiSearch />
+        <div className="hidden md:flex justify-center items-center  rounded-lg gap-2 pl-2 relative">
+          <FiSearch className="absolute left-4"/>
           <input
             type="text"
-            className="w-80"
+            className="w-80 h-10 text-sm font-thin border rounded-lg pl-8"
             placeholder="What are you looking for"
           />
         </div>
