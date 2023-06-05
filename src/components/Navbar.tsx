@@ -43,8 +43,8 @@ export default function Navbar() {
           <FiAlignRight size="25" className="cursor-pointer mr-1.5 m-1.5" />
         </div>
         {mobNav && (
-          <div className="fixed md:hidden left-0 top-0 w-full h-screen bg-black/70">
-            <div className="fixed z-20 right-0 top-0 w-[100%] sm:w-[60%] md:[45%] h-screen bg-white p-4 ease-in duration-500">
+          // <div className="fixed md:hidden left-0 top-0 w-full h-screen bg-black/70">
+            <div className="fixed z-20 right-0 top-0 w-[100%] sm:w-[60%] md:[45%] h-screen bg-white px-4 pt-6 ease-in duration-500">
               <div className="flex justify-between pt-4">
                 <div>
                   <Image src="/Logo.webp" alt="logo" width={140} height={40} />
@@ -75,7 +75,7 @@ export default function Navbar() {
                 </ul>
               </div>
             </div>
-          </div>
+          // </div>
         )}
       </div>
     </div>
