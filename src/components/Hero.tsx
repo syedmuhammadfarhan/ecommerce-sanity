@@ -16,14 +16,20 @@ export default function Hero() {
           Anyone can beat you but no one can beat your outfit as long as you
           wear Dine outfits.
               </p>
-              <div className="flex justify-center items-center bg-black max-w-fit p-6 gap-x-4">
+              <div className="flex justify-between items-center bg-black max-w-fit px-5 py-4 gap-x-7">
                   <FiShoppingCart size={20} color="white"/>
-                  <p className="text-white">Start Shopping</p>
+                  <p className="text-white text-center font-bold">Start<br/>Shopping</p>
               </div>
+      <div className="flex gap-x-6">
+        <Image src="/Featured1.png" alt="Feature1" width={110} height={110}></Image>
+        <Image src="/Featured2.png" alt="Feature1" width={110} height={110}></Image>
+        <Image src="/Featured3.png" alt="Feature1" width={110} height={110}></Image>
+        <Image src="/Featured4.png" alt="Feature1" width={110} height={110}></Image>
+      </div>
       </div>
 
       <div className="basis-1/2 flex justify-center items-center">
-        <Image src="/header.png" alt="hero" width={50} height={50} />
+        <Image src="/header.png" alt="hero" width={650} height={650} />
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { Wrapper } from "@/shared/Wrapper";
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
