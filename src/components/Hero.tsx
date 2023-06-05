@@ -22,8 +22,8 @@ export default function Hero() {
               </div>
       </div>
 
-      <div className="basis-1/2">
-        <Image src="/header.png" alt="hero" width={100} height={100} />
+      <div className="basis-1/2 flex justify-center items-center">
+        <Image src="/header.png" alt="hero" width={50} height={50} />
       </div>
     </div>
   );

@@ -1,32 +1,35 @@
 "use client";
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import Image from "next/image";
 import { FiAlignRight, FiSearch, FiShoppingCart, FiX } from "react-icons/fi";
 import { navItems } from "@/Data/Navbar-data";
 import Link from "next/link";
 
+
+
+
 export default function Navbar() {
   const [mobNav, setMobNav] = useState(false);
 
   return (
-    <div className="">
+    <>
       <div className=" bg-red-200 pt-8 pb-2 px-2 flex justify-between">
         {/* logo */}
-        <div className="p-2">
+        <div className="py-2">
           <Image src="/Logo.png" alt="logo" height={1} width={140} />
         </div>
         {/* navbar items */}
         <div className="bg-green-200 hidden md:flex justify-between items-center gap-x-20">
           {navItems.map((items: { navList: string; href: string }, i) => {
             return (
-              <div key={i} className="">
+              <div key={i} className="text-md">
                 <Link href={items.href}>{items.navList}</Link>
               </div>
             );
           })}
         </div>
         {/* search box */}
-        <div className="hidden md:flex justify-center items-center border rounded-lg">
+        <div className="hidden md:flex justify-center items-center border rounded-lg gap-2">
           <FiSearch />
           <input
             type="text"
@@ -81,6 +84,6 @@ export default function Navbar() {
           // </div>
         )}
       </div>
-    </div>
+    </>
   );
 }
