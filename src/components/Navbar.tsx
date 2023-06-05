@@ -13,7 +13,7 @@ export default function Navbar() {
       <div className=" bg-red-200 pt-8 pb-2 px-2 flex justify-between">
         {/* logo */}
         <div className="p-2">
-          <Image src="/Logo.webp" alt="logo" height={1} width={140} />
+          <Image src="/Logo.png" alt="logo" height={1} width={140} />
         </div>
         {/* navbar items */}
         <div className="bg-green-200 hidden md:flex justify-between items-center gap-x-20">
@@ -35,7 +35,8 @@ export default function Navbar() {
           />
         </div>
         {/* cart */}
-        <div className="w-11 h-11 rounded-full bg-gray-200 justify-center items-center hidden md:flex">
+        <div className="relative w-11 h-11 rounded-full bg-gray-200 justify-center items-center hidden md:flex">
+          <div className="absolute top-0 right-0 w-4 h-4 rounded-full bg-red-500 text-xs text-center">0</div>
           <FiShoppingCart size={20} />
         </div>
         {/* Hamburger icon*/}
@@ -44,37 +45,39 @@ export default function Navbar() {
         </div>
         {mobNav && (
           // <div className="fixed md:hidden left-0 top-0 w-full h-screen bg-black/70">
-            <div className="fixed z-20 right-0 top-0 w-[100%] sm:w-[60%] md:[45%] h-screen bg-white px-4 pt-6 ease-in duration-500">
-              <div className="flex justify-between pt-4">
-                <div>
-                  <Image src="/Logo.webp" alt="logo" width={140} height={40} />
-                </div>
-                <FiX size={25}
-                  onClick={() => {
-                    // setProMenu(false);
-                    setMobNav(!mobNav);
-                  }}
-                  className="cursor-pointer"
-                />
+          <div className="fixed  right-0 top-0 w-[100%] h-screen bg-white px-4 pt-6 ease-in duration-500">
+            <div className="flex justify-between pt-4">
+              <div>
+                <Image src="/Logo.png" alt="logo" width={140} height={40} />
               </div>
-              <div className="leading-10 pt-10 text-md text-center">
-                <ul>
-                  {navItems.map(
-                    (items: { navList: string; href: string }, i) => (
-                      <li
-                        onClick={() => {
-                          setMobNav(!mobNav);
-                          // setProMenu(false);
-                        }}
-                        key={i}
-                      >
-                        <Link href={items.href}>{items.navList}</Link>
-                      </li>
-                    )
-                  )}
-                </ul>
-              </div>
+              <FiX
+                size={25}
+                onClick={() => {
+                  // setProMenu(false);
+                  setMobNav(!mobNav);
+                }}
+                className="cursor-pointer"
+              />
             </div>
+            <div className="leading-10 pt-10 text-md flex flex-col justify-center items-center text-center">
+              <div className="w-11 h-11 rounded-full bg-gray-200 flex justify-center items-center my-3">
+                <FiShoppingCart size={20} />
+              </div>
+              <ul>
+                {navItems.map((items: { navList: string; href: string }, i) => (
+                  <li
+                    onClick={() => {
+                      setMobNav(!mobNav);
+                      // setProMenu(false);
+                    }}
+                    key={i}
+                  >
+                    <Link href={items.href}>{items.navList}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
           // </div>
         )}
       </div>
