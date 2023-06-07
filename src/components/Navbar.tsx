@@ -5,9 +5,7 @@ import { FiAlignRight, FiSearch, FiShoppingCart, FiX } from "react-icons/fi";
 import { navItems } from "@/Data/Navbar-data";
 import Link from "next/link";
 
-// export const Wrapper = ({ children }: { children: React.ReactNode }) => {
-//   return <div className="max-w-7xl mx-auto">{children}</div>;
-// };
+
 
 
 export default function Navbar() {

@@ -1,7 +1,10 @@
+import { Wrapper } from "@/shared/Wrapper";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FiShoppingCart } from "react-icons/fi";
+
+
 
 export default function Hero() {
   return (
@@ -11,7 +14,7 @@ export default function Hero() {
           <span className="bg-[#e1edff] font-[600] text-indigo-700 text-lg py-2 px-6 rounded-md max-w-fit">
             Sale 70%
           </span>
-          <h1 className="text-5xl md:text-6xl font-extrabold">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold">
             An Industrial Take on Streetwear
           </h1>
           <p className="text-md text-gray-400 font-light">
@@ -32,25 +35,25 @@ export default function Hero() {
               src="/Featured1.png"
               alt="Feature1"
               width={110}
-              height={110}
+              height={90}
             ></Image>
             <Image
               src="/Featured2.png"
               alt="Feature1"
               width={110}
-              height={110}
+              height={90}
             ></Image>
             <Image
               src="/Featured3.png"
               alt="Feature1"
               width={110}
-              height={110}
+              height={90}
             ></Image>
             <Image
               src="/Featured4.png"
               alt="Feature1"
               width={110}
-              height={110}
+              height={90}
             ></Image>
           </div>
         </div>
