@@ -2,3 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* .newsletter {
+    padding: 10rem 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.newsletter-background {
+    font-weight: 800;
+    font-size: 7.5rem;
+    line-height: 151px;
+    color: #f2f3f7;
+    position: absolute;
+    z-index: -1;
+}
+
+.newsletter h1 {
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 40px;
+    letter-spacing: 0.03em;
+    color: #212121;
+}
+
+.newsletter p {
+    margin-bottom: 2rem;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 26px;
+    color: #212121;
+}
+
+.newsletter input {
+    padding: 10px 120px 10px 20px;
+    background: #FCFCFC;
+    border: 1px solid gray;
+}
+
+.newsletter button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 16px;
+} */

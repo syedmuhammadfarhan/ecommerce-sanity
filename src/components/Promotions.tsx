@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 
-
 export default function Promotions() {
   return (
     <>
@@ -32,15 +31,35 @@ export default function Promotions() {
             <div className="text-white flex flex-col justify-center items-center">
               <h2 className="text-3xl font-bold tracking-wider">GET 30% Off</h2>
               <p className="text-sm">USE PROMO CODE</p>
-              <div className="text-lg tracking-widest bg-[#474747] rounded-lg px-8 py-1">DINEWEEKENDSALE</div>
+              <div className="text-lg tracking-widest bg-[#474747] rounded-lg px-8 py-1">
+                DINEWEEKENDSALE
+              </div>
             </div>
           </div>
         </div>
         <div className="border basis-1/2 flex justify-between gap-x-6 p-6">
           {/* card 3 */}
-          <div className="border w-1/2 h-full bg-[#EFE1C7]"></div>
+          <div className="border w-1/2 h-full bg-[#EFE1C7]">
+            <p>Flex Sweatshirt</p>
+            <div className="flex gap-x-3">
+              <del>$100.00</del>
+              <p>$75.00</p>
+            </div>
+            <div className="border">
+              <Image src="/event2.png" alt="event2" width={250} height={250} />
+            </div>
+          </div>
           {/* card 4 */}
-          <div className="border w-1/2 h-full bg-[#D7D7D9]"></div>
+          <div className="border w-1/2 h-full bg-[#D7D7D9]">
+            <p>Flex Push Button Bomber</p>
+            <div className="flex gap-x-3">
+              <del>$225.00</del>
+              <p>$190.00</p>
+            </div>
+            <div className="border">
+              <Image src="/event3.png" alt="event3" width={250} height={250} />
+            </div>
+          </div>
         </div>
       </div>
     </>
