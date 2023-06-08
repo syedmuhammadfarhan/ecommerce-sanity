@@ -10,6 +10,16 @@ export const product = {
       type: "string",
       title: "Product Title",
     },
+    defineField({
+      name: "generic",
+      type: "reference",
+      title: "Product Generic",
+       to: [
+        {
+          type: "generic",
+        },
+      ],
+    }),
     {
       name: "description",
       type: "number",

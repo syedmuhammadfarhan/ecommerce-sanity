@@ -10,13 +10,13 @@ const Newsletter = () => {
   
 
   return (
-    <section className="pt-[10rem] pr-[8rem] flex flex-col justify-center items-center text-center relative z-10">
+    <section className="border pt-[10rem] pb-2 flex flex-col  justify-center items-center relative z-10">
       <div className="text-[#f2f3f7] text-9xl font-bold absolute -z-10">Newsletter</div>
-      <h1 className="text-4xl font-bold mb-[1rem]">Subscribe Our Newsletter</h1>
-      <p className="mb-[2rem]">Get the latest information and promo offers directly</p>
+      <h1 className="text-4xl font-bold mb-6">Subscribe Our Newsletter</h1>
+      <p className="mb-6">Get the latest information and promo offers directly</p>
       <form onSubmit={handleSubmit}>
-        <input className="border  pl-2 pr-[120px]  max-w-7xl py-[10px] mr-4 text-sm" type="email" placeholder="Input email address"></input>
-        <button className="bg-black px-4 py-[10px] text-white border-none " type="submit">Get Started</button>
+        <input className="border border-black pl-2 pr-2 w-80 max-w-7xl py-[10px] text-sm rounded-lg" type="email" placeholder="Enter email address"></input>
+        <button className="bg-black px-4 py-2 text-white rounded-lg m-2" type="submit">Get Started</button>
       </form>
     </section>
   );
