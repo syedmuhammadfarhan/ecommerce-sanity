@@ -26,13 +26,13 @@ export const getProductData = async () => {
   return res;
 };
 
-export default async function page({ params }: { params: { name: string } }) {
+export default async function page({ params }: { params: { category: string } }) {
   const data: IProduct[] = await getProductData();
   console.log(data);
 
   return (
     <div>
-      {params.name === "Male" && (
+      {params.category === "Male" && (
         <div className="border border-red-500 flex gap-x-16 pt-20">
           {data.filter((items)=> items.category.name==='Male').map((items: any) => (
             <div>
