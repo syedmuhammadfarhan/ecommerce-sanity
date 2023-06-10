@@ -16,7 +16,7 @@ export default function Navbar() {
       <div className="border pt-8 pb-2 px-2 flex justify-between">
         {/* logo */}
         <div className="py-2">
-          <Image src="/Logo.png" alt="logo" height={4} width={160} />
+          <Image src="/Logo.png" alt="logo" height={3} width={150} />
         </div>
         {/* navbar items */}
         <div className="hidden md:flex justify-between items-center gap-x-20">
@@ -33,7 +33,7 @@ export default function Navbar() {
           <FiSearch className="absolute left-4"/>
           <input
             type="text"
-            className="w-80 h-10 text-sm font-thin border rounded-lg pl-8"
+            className="w-[22rem] h-8 text-sm font-thin border rounded-lg pl-8"
             placeholder="What are you looking for"
           />
         </div>
