@@ -7,7 +7,7 @@ interface IProduct {
   generic: { name: string };
   price: number;
   image: [];
-  category: string;
+  category: {name: string};
 }
 
 export const getProductData = async () => {
@@ -34,7 +34,7 @@ export default async function page({ params }: { params: { name: string } }) {
     <div>
       {params.name === "Male" && (
         <div className="border border-red-500 flex gap-x-16 pt-20">
-          {data.map((items: any) => (
+          {data.filter((items)=> items.category.name==='Male').map((items: any) => (
             <div>
               <div className="border w-60 h-64">image</div>
               <div>{items.title}</div>
