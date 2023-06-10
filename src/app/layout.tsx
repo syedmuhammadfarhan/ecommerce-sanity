@@ -4,7 +4,7 @@ import { Sora } from "next/font/google";
 
 const inter = Sora({ subsets: ["latin"] });
 
-export const Wrapper = ({ children }: { children: React.ReactNode }) => {
+const Wrapper = ({ children }: { children: React.ReactNode }) => {
   return <div className="max-w-7xl mx-4 md:mx-auto">{children}</div>;
 };
 
@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Wrapper>
-          {/* <Navbar /> */}
+          <Navbar />
           {children}
         </Wrapper>
       </body>

@@ -2,8 +2,8 @@ import { defineField } from "sanity";
 
 export const product = {
   name: "product",
-  type: "document",
   title: "Product",
+  type: "document",
   fields: [
     {
       name: "title",
@@ -12,8 +12,8 @@ export const product = {
     },
     defineField({
       name: "generic",
-      type: "reference",
       title: "Product Generic",
+      type: "reference",
        to: [
         {
           type: "generic",
@@ -22,23 +22,24 @@ export const product = {
     }),
     {
       name: "description",
-      type: "number",
       title: "Product Description",
+      type: "string",
     },
     {
       name: "price",
-      type: "string",
       title: "Product Price",
-    },
-    {
-      name: "image",
-      type: "image",
-      title: "Product Image",
+      type: "string",
     },
     defineField({
+      name: "image",
+      title: "Product Image",
+      type: "array",
+      of: [{type: "image"}]
+    }),
+    defineField({
       name: "category",
-      type: "reference",
       title: "Product Category",
+      type: "reference",
       to: [
         {
           type: "category",
