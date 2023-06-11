@@ -5,7 +5,7 @@ import { Sora } from "next/font/google";
 const inter = Sora({ subsets: ["latin"] });
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => {
-  return <div className="max-w-7xl  md:mx-auto">{children}</div>;
+  return <div className="max-w-6xl  md:mx-auto">{children}</div>;
 };
 
 

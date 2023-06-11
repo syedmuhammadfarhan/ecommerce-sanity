@@ -1,11 +1,10 @@
-"use client";
+// "use client";
 import React, { useState } from "react";
 import { client } from "../../../sanity/lib/client";
 import Link from "next/link";
 import { Image as IImage } from "sanity";
 import Image from "next/image";
 import { urlForImage } from "../../../sanity/lib/image";
-import Individual from "../Individual/page";
 
 interface IProduct {
   _id: string;
@@ -32,67 +31,16 @@ export const getProductData = async () => {
   return res;
 };
 
-export default async function page({
-  params,
-}: {
-  params: { category: string };
-}) {
+export default async function Individual(id:any) {
   const data: IProduct[] = await getProductData();
-  console.log(data);
-const[index,setIndex]=useState(0)
-
+  // console.log(data);
+  console.log(id)
+  
 
   return (
     <div>
-      {params.category === "Male" && (
-        <div className="border border-red-500 flex flex-wrap justify-center md:justify-normal gap-16 pt-20">
-          {data
-            .filter((items) => items.category.name === "Male")
-            .map((items: any) => (
-              <Link href="" className="border border-green-400">
-                <div className="border w-60 h-64">
-                  <Image
-                    src={urlForImage(items.image[0]).url()}
-                    alt=""
-                    width={300}
-                    height={300}
-                  />
-                </div>
-                <div>{items.title}</div>
-                <div>{items.generic.name}</div>
-                <div>{items.price}</div>
-              </Link>
-            ))}
-        </div>
-      )}
-
-      {params.category === "Female" && (
-        <div className="border border-red-500 flex flex-wrap  justify-center md:justify-between gap-12 pt-20">
-          {data
-            .filter((items) => items.category.name === "Female")
-            .map((items: any) => (
-              <div onClick={() =>console.log(items._id)} className="border border-green-400">
-                <div className="border w-60 h-64">
-                  <Image
-                    src={urlForImage(items.image[0]).url()}
-                    alt=""
-                    width={300}
-                    height={300}
-                  />
-                </div>
-                <div>{items.title}</div>
-                <div>{items.generic.name}</div>
-                <div>{items.price}</div>
-              </div>
-            ))}
-        </div>
-      )}
-
-      {/* individual item detail */}
-      {/* {data.find((items) => params.category === items._id) && ( */}
-      {/* <div> */}
       {data
-        .filter((items) => items._id === params.category)
+        .filter((items) => items._id === id)
         .map((items) => (
           <div className="flex gap-x-8 pt-24">
             <div>
@@ -131,8 +79,6 @@ const[index,setIndex]=useState(0)
             </div>
           </div>
         ))}
-      {/* </div> */}
-      {/* )} */}
     </div>
   );
 }
