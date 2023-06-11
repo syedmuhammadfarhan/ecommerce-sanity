@@ -34,7 +34,13 @@ export const product = {
       name: "image",
       title: "Product Image",
       type: "array",
-      of: [{type: "image"}]
+      of: [defineField(
+        {
+          name:"image",
+          type: "image",
+          title:"Product Image"
+        })
+      ]
     }),
     defineField({
       name: "category",

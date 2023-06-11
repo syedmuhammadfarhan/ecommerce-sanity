@@ -16,7 +16,9 @@ export default function Navbar() {
       <div className="border pt-8 pb-2 px-2 flex justify-between">
         {/* logo */}
         <div className="py-2">
-          <Image src="/Logo.png" alt="logo" height={3} width={150} />
+          <Link href="/">
+            <Image src="/Logo.png" alt="logo" height={3} width={150} />
+          </Link>
         </div>
         {/* navbar items */}
         <div className="hidden md:flex justify-between items-center gap-x-20">
@@ -30,7 +32,7 @@ export default function Navbar() {
         </div>
         {/* search box */}
         <div className="hidden md:flex justify-center items-center  rounded-lg gap-2 pl-2 relative">
-          <FiSearch className="absolute left-4"/>
+          <FiSearch className="absolute left-4" />
           <input
             type="text"
             className="w-[22rem] h-8 text-sm font-thin border rounded-lg pl-8"
@@ -39,7 +41,9 @@ export default function Navbar() {
         </div>
         {/* cart */}
         <div className="relative w-11 h-11 rounded-full bg-gray-200 justify-center items-center hidden md:flex">
-          <div className="absolute top-0 right-0 w-4 h-4 rounded-full bg-red-500 text-xs text-center">0</div>
+          <div className="absolute top-0 right-0 w-4 h-4 rounded-full bg-red-500 text-xs text-center">
+            0
+          </div>
           <FiShoppingCart size={20} />
         </div>
         {/* Hamburger icon*/}

@@ -1,7 +1,7 @@
 export const navItems = [
   {
     navList: "Female",
-    href: "/female",
+    href: "/Female",
   },
   {
     navList: "Male",
@@ -9,7 +9,7 @@ export const navItems = [
   },
   {
     navList: "Kids",
-    href: "/kids",
+    href: "/Kids",
   },
   {
     navList: "All Products",
