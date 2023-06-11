@@ -39,7 +39,6 @@ export default async function page({
   const data: IProduct[] = await getProductData();
   console.log(data);
 
-   let n=111
   return (
     <div>
       {params.category === "Male" && (
@@ -85,6 +84,8 @@ export default async function page({
             ))}
         </div>
       )}
+
+      {/* individual item detail */}
       {/* {data.find((items) => params.category === items._id) && ( */}
       {/* <div> */}
       {data
@@ -94,15 +95,16 @@ export default async function page({
             <div>
               {items.image.map((images, i) => (
                 <div className="border border-red-400 w-24 h-[6.3rem] overflow-hidden mb-4">
+                  <Link href={items._id}>
                   <Image
-                    onClick={()=>n}
                     className="max-h-[6.3rem] max-w-[6rem] object-cover"
                     src={urlForImage(images).url()}
                     alt=""
                     width={100}
                     height={120}
-                  />
-                  console.log(n)
+                    />
+                    console.log(i)
+                    </Link>
                 </div>
               ))}
             </div>
