@@ -1,4 +1,5 @@
-import React from "react";
+// "use client";
+import React, { useState } from "react";
 import { client } from "../../../sanity/lib/client";
 import Link from "next/link";
 import { Image as IImage } from "sanity";
@@ -38,11 +39,11 @@ export default async function page({
   const data: IProduct[] = await getProductData();
   console.log(data);
 
-  
+   let n=111
   return (
     <div>
       {params.category === "Male" && (
-        <div className="border border-red-500 flex gap-x-16 pt-20">
+        <div className="border border-red-500 flex flex-wrap justify-center md:justify-normal gap-16 pt-20">
           {data
             .filter((items) => items.category.name === "Male")
             .map((items: any) => (
@@ -64,7 +65,7 @@ export default async function page({
       )}
 
       {params.category === "Female" && (
-        <div className="border border-red-500 flex gap-x-16 pt-20">
+        <div className="border border-red-500 flex flex-wrap  justify-center md:justify-between gap-16 pt-20">
           {data
             .filter((items) => items.category.name === "Female")
             .map((items: any) => (
@@ -91,18 +92,19 @@ export default async function page({
         .map((items) => (
           <div className="flex gap-x-8 pt-24">
             <div>
-
-            {items.image.map((images,i) => (
-              <div className="border border-red-400 w-24 h-[6.3rem] overflow-hidden mb-4">
-                <Image
-                  className="max-h-[6.3rem] max-w-[6rem] object-cover"
-                  src={urlForImage(images).url()}
-                  alt=""
-                  width={100}
-                  height={120}
+              {items.image.map((images, i) => (
+                <div className="border border-red-400 w-24 h-[6.3rem] overflow-hidden mb-4">
+                  <Image
+                    onClick={()=>n}
+                    className="max-h-[6.3rem] max-w-[6rem] object-cover"
+                    src={urlForImage(images).url()}
+                    alt=""
+                    width={100}
+                    height={120}
                   />
-              </div>
-            ))}
+                  console.log(n)
+                </div>
+              ))}
             </div>
             <div className="border border-red-400 w-[44rem] h-[46rem] overflow-hidden">
               <Image
