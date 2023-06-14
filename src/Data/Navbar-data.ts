@@ -1,18 +1,18 @@
 export const navItems = [
   {
     navList: "Female",
-    href: "/Female",
+    href: "/products/Female",
   },
   {
     navList: "Male",
-    href: "/Male",
+    href: "products/Male",
   },
   {
     navList: "Kids",
-    href: "/Kids",
+    href: "products/Kids",
   },
   {
     navList: "All Products",
-    href: "/allproducts",
+    href: "products/Allproducts",
   },
 ];
