@@ -1,10 +1,11 @@
-// "use client";
+
 import React, { useState } from "react";
 import { client } from "../../../sanity/lib/client";
 import Link from "next/link";
 import { Image as IImage } from "sanity";
 import Image from "next/image";
 import { urlForImage } from "../../../sanity/lib/image";
+
 
 interface IProduct {
   _id: string;
@@ -31,16 +32,22 @@ export const getProductData = async () => {
   return res;
 };
 
-export default async function Individual(id:any) {
+
+export default async function page({
+  params,
+}: {
+  params: { _id: string };
+}) {
   const data: IProduct[] = await getProductData();
-  // console.log(data);
-  console.log(id)
-  
+  console.log(data);
 
   return (
     <div>
+      {/* individual item detail */}
+      {/* {data.find((items) => params.category === items._id) && ( */}
+      {/* <div> */}
       {data
-        .filter((items) => items._id === id)
+        .filter((items) => items._id === params._id)
         .map((items) => (
           <div className="flex gap-x-8 pt-24">
             <div>
@@ -79,6 +86,8 @@ export default async function Individual(id:any) {
             </div>
           </div>
         ))}
+      {/* </div> */}
+      {/* )} */}
     </div>
   );
 }

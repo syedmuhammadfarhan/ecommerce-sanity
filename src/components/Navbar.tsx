@@ -5,9 +5,6 @@ import { FiAlignRight, FiSearch, FiShoppingCart, FiX } from "react-icons/fi";
 import { navItems } from "@/Data/Navbar-data";
 import Link from "next/link";
 
-
-
-
 export default function Navbar() {
   const [mobNav, setMobNav] = useState(false);
 
@@ -60,7 +57,6 @@ export default function Navbar() {
               <FiX
                 size={25}
                 onClick={() => {
-                  // setProMenu(false);
                   setMobNav(!mobNav);
                 }}
                 className="cursor-pointer"
@@ -75,7 +71,6 @@ export default function Navbar() {
                   <li
                     onClick={() => {
                       setMobNav(!mobNav);
-                      // setProMenu(false);
                     }}
                     key={i}
                   >

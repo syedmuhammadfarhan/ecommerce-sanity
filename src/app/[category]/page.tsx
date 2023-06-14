@@ -1,11 +1,9 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 import { client } from "../../../sanity/lib/client";
 import Link from "next/link";
 import { Image as IImage } from "sanity";
 import Image from "next/image";
 import { urlForImage } from "../../../sanity/lib/image";
-import Individual from "../Individual/page";
 
 interface IProduct {
   _id: string;
@@ -39,8 +37,6 @@ export default async function page({
 }) {
   const data: IProduct[] = await getProductData();
   console.log(data);
-const[index,setIndex]=useState(0)
-
 
   return (
     <div>
@@ -48,8 +44,8 @@ const[index,setIndex]=useState(0)
         <div className="border border-red-500 flex flex-wrap justify-center md:justify-normal gap-16 pt-20">
           {data
             .filter((items) => items.category.name === "Male")
-            .map((items: any) => (
-              <Link href="" className="border border-green-400">
+            .map((items: IProduct) => (
+              <Link href={items._id} className="border border-green-400">
                 <div className="border w-60 h-64">
                   <Image
                     src={urlForImage(items.image[0]).url()}
@@ -70,8 +66,11 @@ const[index,setIndex]=useState(0)
         <div className="border border-red-500 flex flex-wrap  justify-center md:justify-between gap-12 pt-20">
           {data
             .filter((items) => items.category.name === "Female")
-            .map((items: any) => (
-              <div onClick={() =>console.log(items._id)} className="border border-green-400">
+            .map((items: IProduct) => (
+              <Link
+                href={`${items._id}`}
+                className="border border-green-400"
+              >
                 <div className="border w-60 h-64">
                   <Image
                     src={urlForImage(items.image[0]).url()}
@@ -83,7 +82,7 @@ const[index,setIndex]=useState(0)
                 <div>{items.title}</div>
                 <div>{items.generic.name}</div>
                 <div>{items.price}</div>
-              </div>
+              </Link>
             ))}
         </div>
       )}
@@ -91,7 +90,7 @@ const[index,setIndex]=useState(0)
       {/* individual item detail */}
       {/* {data.find((items) => params.category === items._id) && ( */}
       {/* <div> */}
-      {data
+      {/* {data
         .filter((items) => items._id === params.category)
         .map((items) => (
           <div className="flex gap-x-8 pt-24">
@@ -130,7 +129,7 @@ const[index,setIndex]=useState(0)
               </div>
             </div>
           </div>
-        ))}
+        ))} */}
       {/* </div> */}
       {/* )} */}
     </div>
