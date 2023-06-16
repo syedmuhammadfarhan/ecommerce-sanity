@@ -1,20 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import { client } from "../../../../sanity/lib/client";
-import Link from "next/link";
-import { Image as IImage } from "sanity";
 import Image from "next/image";
 import { urlForImage } from "../../../../sanity/lib/image";
 import { useRouter } from "next/navigation";
-
-interface IProduct {
-  _id: string;
-  title: string;
-  generic: { name: string };
-  price: number;
-  image: IImage[];
-  category: { name: string };
-}
+import { IProduct } from "@/app/products/[category]/page";
 
 export const getProductData = async () => {
   const res = await client.fetch(`*[_type=='product']{
@@ -42,7 +32,9 @@ export async function generateStaticParams() {
 
 export default async function page({ params }: { params: { id: string } }) {
   const { refresh } = useRouter();
+
   const [index, setIndex] = useState(0);
+
   const data: IProduct[] = await getProductData();
   console.log(data);
 
@@ -50,7 +42,6 @@ export default async function page({ params }: { params: { id: string } }) {
 
   const handleindex = (i: number) => {
     setIndex(i);
-    refresh();
   };
 
   return (
@@ -64,10 +55,15 @@ export default async function page({ params }: { params: { id: string } }) {
               <div key={i} className="flex gap-x-8 pt-24">
                 <div>
                   {items.image.map((images, i) => (
-                    <div key={i} className="border border-red-400 w-24 h-[6.3rem] overflow-hidden mb-4">
+                    <div
+                      key={i}
+                      className="border border-red-400 w-24 h-[6.3rem] overflow-hidden mb-4"
+                    >
                       <div>
                         <Image
-                          onClick={() => handleindex(i)}
+                          onClick={() => {
+                            handleindex(i);
+                          }}
                           className="max-h-[6.3rem] max-w-[6rem] object-cover"
                           src={urlForImage(images).url()}
                           alt="productimage"
@@ -86,8 +82,7 @@ export default async function page({ params }: { params: { id: string } }) {
                     alt="productimage"
                     width={1000}
                     height={800}
-                        />
-                
+                  />
                 </div>
                 <div className="border">
                   <div>{items.title}</div>

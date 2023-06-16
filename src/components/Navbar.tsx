@@ -12,11 +12,16 @@ export default function Navbar() {
     <>
       <div className="border pt-8 pb-2 px-2 flex justify-between">
         {/* logo */}
-        <div className="py-2">
-          <Link href="/">
-            <Image src="/Logo.png" alt="logo" height={3} width={150} />
-          </Link>
-        </div>
+        <Link href="/">
+          <div className="py-[0.45rem] bg-red-400">
+            <Image
+              src="/Logo.png"
+              alt="dinemartlogo"
+              height={100}
+              width={140}
+            />
+          </div>
+        </Link>
         {/* navbar items */}
         <div className="hidden lg:flex justify-between items-center gap-x-20">
           {navItems.map((items: { navList: string; href: string }, i) => {
