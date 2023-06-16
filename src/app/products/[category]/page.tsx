@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { client } from "../../../../sanity/lib/client";
 import Link from "next/link";
 import { Image as IImage } from "sanity";
@@ -15,7 +15,8 @@ export interface IProduct {
 }
 
 export const getProductData = async () => {
-  const res = await client.fetch(`*[_type=='product']{
+  const res = await client.fetch(
+    `*[_type=='product']{
     _id,
     title,
     generic -> {
@@ -26,17 +27,21 @@ export const getProductData = async () => {
     category -> {
       name,
     },
-}`);
+}`,
+    {
+      cache: "no-store",
+    }
+  );
   return res;
 };
 
-export async function generateStaticParams() {
-  const res: IProduct[] = await getProductData();
+// export async function generateStaticParams() {
+//   const res: IProduct[] = await getProductData();
 
-  return res.map((items) => ({
-    category: items.category.name,
-  }));
-}
+//   return res.map((items) => ({
+//     category: items.category.name,
+//   }));
+// }
 
 export default async function page({
   params,
@@ -44,7 +49,7 @@ export default async function page({
   params: { category: string };
 }) {
   const data: IProduct[] = await getProductData();
-  console.log(data);
+  // console.log(data);
 
   return (
     <div>
