@@ -35,14 +35,6 @@ export const getProductData = async () => {
   return res;
 };
 
-// export async function generateStaticParams() {
-//   const res: IProduct[] = await getProductData();
-
-//   return res.map((items) => ({
-//     category: items.category.name,
-//   }));
-// }
-
 export default async function page({
   params,
 }: {

@@ -25,14 +25,6 @@ export const getProductData = async () => {
   return res;
 };
 
-// export async function generateStaticParams() {
-//   const res: IProduct[] = await getProductData();
-
-//   return res.map((items) => ({
-//     id: items._id,
-//   }));
-// }
-
 export default async function page({ params }: { params: { id: string } }) {
   const data: IProduct[] = await getProductData();
   // console.log(data);
