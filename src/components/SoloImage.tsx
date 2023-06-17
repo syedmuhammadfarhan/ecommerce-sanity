@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { IProduct } from "@/app/products/[category]/page";
 import { urlForImage } from "../../sanity/lib/image";
+import { IProduct } from "@/app/page";
 
 export default function SoloImage({ data }: { data: IProduct[] }) {
   console.log(data);
