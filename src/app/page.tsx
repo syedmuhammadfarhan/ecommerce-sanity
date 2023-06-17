@@ -4,11 +4,12 @@ import Products from "@/components/Products";
 import Promotions from "@/components/Promotions";
 
 export default function Home() {
+  
   return (
     <div>
-      {/* <Hero />
+      <Hero />
       <Promotions />
-      <Products /> */}
+      <Products />
       <Newsletter/>
     </div>
   );

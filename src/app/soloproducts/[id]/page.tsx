@@ -1,6 +1,5 @@
 import React from "react";
 import { client } from "../../../../sanity/lib/client";
-import { urlForImage } from "../../../../sanity/lib/image";
 import { IProduct } from "@/app/products/[category]/page";
 import SoloImage from "@/components/SoloImage";
 
