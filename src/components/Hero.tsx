@@ -9,7 +9,7 @@ import { FiShoppingCart } from "react-icons/fi";
 export default function Hero() {
   return (
     <>
-      <div className="border flex flex-1 justify-between gap-[4rem] pt-16">
+      <div className="border flex flex-1 justify-between gap-[2rem] pt-16">
         <div className="flex flex-1 flex-col border border-gray-400 py-10 space-y-10">
           <span className="bg-[#e1edff] font-[600] text-indigo-700 text-lg py-2 px-6 rounded-md max-w-fit">
             Sale 70%
@@ -34,39 +34,39 @@ export default function Hero() {
             <Image
               src="/Featured1.png"
               alt="Feature1"
-              width={110}
+              width={100}
               height={90}
             ></Image>
             <Image
               src="/Featured2.png"
               alt="Feature1"
-              width={110}
+              width={100}
               height={90}
             ></Image>
             <Image
               src="/Featured3.png"
               alt="Feature1"
-              width={110}
+              width={100}
               height={90}
             ></Image>
             <Image
               src="/Featured4.png"
               alt="Feature1"
-              width={110}
+              width={100}
               height={90}
             ></Image>
           </div>
         </div>
-        <div className="border hidden md:flex flex-1 justify-center">
-          <div className="bg-[#FFECE3] relative w-[580px] h-[580px] rounded-full  flex-1">
+        <div className="border hidden md:flex flex-1 justify-center w-[40rem] h-[37rem]">
+          <div className="bg-[#FFECE3] absolute w-[35rem] h-[35rem] max-w-[40rem] rounded-full flex-1">
+          </div>
             <Image
               src="/header.png"
               alt="hero"
               width={650}
-              height={650}
-              className="absolute"
+              height={500}
+              className="absolute top-[7rem]"
             />
-          </div>
         </div>
       </div>
     </>
