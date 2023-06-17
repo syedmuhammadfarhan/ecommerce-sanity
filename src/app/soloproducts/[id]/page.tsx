@@ -27,9 +27,9 @@ export const getProductData = async () => {
 export default async function page({ params }: { params: { id: string } }) {
   const data: IProduct[] = await getProductData();
   // console.log(data);
-  const Array = data.filter((items) => items._id === params.id);
+  const itemSelected = data.filter((items) => items._id === params.id);
   // const image = Array[0].image.filter((items) => items);
   // const imageURL = image.map((items) => urlForImage(items).url());
 
-  return <SoloImage data={Array} />;
+  return <SoloImage data={itemSelected} />;
 }
