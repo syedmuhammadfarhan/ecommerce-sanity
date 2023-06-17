@@ -58,12 +58,12 @@ export default function Hero() {
           </div>
         </div>
         <div className="border hidden md:flex flex-1 justify-center w-[40rem] h-[37rem]">
-          <div className="bg-[#FFECE3] absolute w-[35rem] h-[35rem] max-w-[40rem] rounded-full flex-1">
+          <div className="bg-[#FFECE3] relative w-[37rem] h-[37rem] rounded-full flex-1">
           </div>
             <Image
               src="/header.png"
               alt="hero"
-              width={650}
+              width={680}
               height={500}
               className="absolute top-[7rem]"
             />

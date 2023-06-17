@@ -37,7 +37,7 @@ export default async function Products() {
 
       {data.map((items) => (
         <div className="flex justify-evenly mt-10">
-          <div className="border h-[29rem] w-[22rem] hover:scale-110 transition-all">
+          <div className="border h-[29rem] w-[22rem] hover:scale-110 transition ease-in-out duration-500">
             <div className="border border-red-400 w-full h-5/6">
             </div>
               <div>
