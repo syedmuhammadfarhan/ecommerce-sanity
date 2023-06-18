@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { urlForImage } from "../../sanity/lib/image";
 import { IProduct } from "@/app/page";
+import {AiOutlineMinus, AiOutlinePlus} from "react-icons/Ai"
+import { FiShoppingCart } from "react-icons/fi";
+import { sizeChart } from "@/Data/data";
 
 export default function SoloImage({ data }: { data: IProduct[] }) {
   console.log(data);
@@ -46,13 +49,40 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
               height={800}
             />
           </div>
-          <div className="border">
-            <div>{data[0].title}</div>
-            <div>{data[0].generic.name}</div>
-            <div>SELECT SIZE</div>
-            <div className="flex gap-x-4">
-              <button>Add to Cart</button>
-              <p>{data[0].price}</p>
+          <div className="border border-red-400 ">
+            <div className="text-2xl font-bold mb-1">{data[0].title}</div>
+            <div className="text-lg text-slate-400 font-bold mb-6">
+              {data[0].generic.name}
+            </div>
+            <div className="border mb-6">
+              <div className="text-md font-bold mb-2">SELECT SIZE</div>
+              <div className="flex gap-x-7">
+                {sizeChart.map((items) => (
+                  <p className="border rounded-full w-9 h-9 text-slate-500 font-semibold flex items-center justify-center hover:bg-black hover:text-white cursor-pointer">
+                    {items.name}
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex gap-x-8 border mb-8">
+              <div className="font-bold">Quantity:</div>
+              <div className="flex">
+                <span className="border px-2 flex items-center hover:bg-black hover:text-white cursor-pointer">
+                  <AiOutlineMinus />
+                </span>
+                <span className="border px-4 flex items-center">0</span>
+                <span className="border px-2 flex items-center hover:bg-black hover:text-white cursor-pointer">
+                  <AiOutlinePlus />
+                </span>
+              </div>
+            </div>
+            <div className="flex items-center gap-x-4">
+              <button className="flex justify-center items-center gap-x-2 border  rounded-lg  bg-black px-4 py-2 text-white">
+                <FiShoppingCart />
+                Add to Cart
+              </button>
+              <p className="text-xl font-bold">{data[0].price}</p>
             </div>
           </div>
         </div>
