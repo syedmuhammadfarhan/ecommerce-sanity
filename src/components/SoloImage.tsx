@@ -8,7 +8,6 @@ import { FiShoppingCart } from "react-icons/fi";
 import { sizeChart } from "@/Data/data";
 
 export default function SoloImage({ data }: { data: IProduct[] }) {
-  console.log(data);
   const [index, setIndex] = useState(0);
   const handleClick = (i: number) => {
     setIndex(i);
