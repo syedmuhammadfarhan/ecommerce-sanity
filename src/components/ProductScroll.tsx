@@ -15,7 +15,7 @@ export default async function ProductScroll({ data }: { data: IProduct[] }) {
         <div className="border flex items-center max-w-[70rem] w-full h-[30rem] mx-auto mt-4 mb-8 overflow-x-scroll">
           {data.map((items, i) => (
             <Link key={i} href={`/soloproducts/${items._id}`}>
-              <div className="border mx-7 h-[26rem] w-[20rem] hover:scale-110 transition-transform ease-in-out duration-500 rounded-lg overflow-hidden flex flex-col justify-between">
+              <div className="border mx-6 h-[26rem] w-[20rem] hover:scale-110 transition-transform ease-in-out duration-500 rounded-lg overflow-hidden flex flex-col justify-between">
                 <div className="border border-red-400 w-full h-6/7">
                   <Image
                     src={urlForImage(items.image[0]).url()}
