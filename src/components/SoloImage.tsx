@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { urlForImage } from "../../sanity/lib/image";
 import { IProduct } from "@/app/page";
-import {AiOutlineMinus, AiOutlinePlus} from "react-icons/Ai"
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/Ai";
 import { FiShoppingCart } from "react-icons/fi";
 import { sizeChart } from "@/Data/data";
 
@@ -55,9 +55,9 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
             </div>
             <div className="border mb-6">
               <div className="text-md font-bold mb-2">SELECT SIZE</div>
-              <div className="flex gap-x-7">
+              <div className="flex gap-x-5">
                 {sizeChart.map((items) => (
-                  <p className="border rounded-full w-9 h-9 text-slate-500 font-semibold flex items-center justify-center hover:bg-black hover:text-white cursor-pointer">
+                  <p className="border rounded-full w-9 h-9 text-slate-500 font-semibold flex items-center justify-center hover:bg-black hover:text-white cursor-pointer text-sm">
                     {items.name}
                   </p>
                 ))}
@@ -75,13 +75,13 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
                   <AiOutlinePlus />
                 </span>
               </div>
-            </div>
-            <div className="flex items-center gap-x-4">
-              <button className="flex justify-center items-center gap-x-2 border  rounded-lg  bg-black px-4 py-2 text-white">
-                <FiShoppingCart />
-                Add to Cart
-              </button>
-              <p className="text-xl font-bold">{data[0].price}</p>
+              <div className="flex items-center gap-x-4">
+                <button className="flex justify-center items-center gap-x-2 border  rounded-lg  bg-black px-4 py-2 text-white text-sm  hover:bg-green-600">
+                  <FiShoppingCart />
+                  Add to Cart
+                </button>
+                <p className="text-xl font-bold">{data[0].price}</p>
+              </div>
             </div>
           </div>
         </div>
