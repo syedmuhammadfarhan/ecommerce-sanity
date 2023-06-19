@@ -42,12 +42,14 @@ export default function Navbar() {
           />
         </div>
         {/* cart */}
-        <div className="relative w-11 h-11 rounded-full bg-gray-200 justify-center items-center hidden lg:flex">
-          <div className="absolute top-0 right-0 w-4 h-4 rounded-full bg-red-500 text-xs text-center">
-            0
+        <Link href="/cart/cart">
+          <div className="relative w-11 h-11 rounded-full bg-gray-200 justify-center items-center hidden lg:flex">
+            <div className="absolute top-0 right-0 w-4 h-4 rounded-full bg-red-500 text-xs text-center">
+              0
+            </div>
+            <FiShoppingCart size={20} />
           </div>
-          <FiShoppingCart size={20} />
-        </div>
+        </Link>
         {/* Hamburger icon*/}
         <div onClick={() => setMobNav(!mobNav)} className="lg:hidden">
           <FiAlignRight size="25" className="cursor-pointer  my-1.5" />

@@ -28,7 +28,7 @@ export const product = {
     {
       name: "price",
       title: "Product Price",
-      type: "string",
+      type: "number",
     },
     defineField({
       name: "image",

@@ -70,19 +70,19 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
                 <span className="border px-2 flex items-center hover:bg-black hover:text-white cursor-pointer">
                   <AiOutlineMinus />
                 </span>
-                <span className="border px-4 flex items-center">0</span>
+                <span className="border px-4 flex items-center">1</span>
                 <span className="border px-2 flex items-center hover:bg-black hover:text-white cursor-pointer">
                   <AiOutlinePlus />
                 </span>
               </div>
+            </div>
               <div className="flex items-center gap-x-4">
                 <button className="flex justify-center items-center gap-x-2 border  rounded-lg  bg-black px-4 py-2 text-white text-sm  hover:bg-green-600">
                   <FiShoppingCart />
                   Add to Cart
                 </button>
-                <p className="text-xl font-bold">{data[0].price}</p>
+                <p className="text-2xl font-bold">$ {data[0].price}</p>
               </div>
-            </div>
           </div>
         </div>
       }
