@@ -26,7 +26,7 @@ export default function Navbar() {
         <div className="hidden lg:flex justify-between items-center gap-x-20">
           {navItems.map((items: { navList: string; href: string }, i) => {
             return (
-              <div key={i} className="text-sm lg:text-md">
+              <div key={i} className="text-md lg:text-md">
                 <Link href={items.href}>{items.navList}</Link>
               </div>
             );
