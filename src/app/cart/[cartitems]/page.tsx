@@ -15,7 +15,7 @@ export default function page({ params }: { params: { cartitems: string } }) {
         <div className="border border-red-400 w-full p-2 flex flex-col justify-between">
           <div className="flex justify-between">
             <div>title</div>
-            <div>
+            <div className="hover:shadow-lg">
               <TiTrash size={25} />
             </div>
           </div>
