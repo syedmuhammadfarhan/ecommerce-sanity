@@ -4,10 +4,6 @@ import Image from "next/image";
 import { urlForImage } from "../../../../sanity/lib/image";
 import { IProduct, getProductData } from "@/app/page";
 
-
-
-
-
 export default async function page({
   params,
 }: {
@@ -38,9 +34,11 @@ export default async function page({
                       height={300}
                     />
                   </div>
-                  <div>{items.title}</div>
-                  <div>{items.generic.name}</div>
-                  <div>{items.price}</div>
+                  <div className="font-bold">{items.title}</div>
+                  <div className="text-slate-400 font-bold">
+                    {items.generic.name}
+                  </div>
+                  <div className="text-lg font-bold">$ {items.price}</div>
                 </Link>
               ))}
           </div>

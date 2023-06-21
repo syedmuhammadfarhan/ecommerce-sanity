@@ -27,7 +27,7 @@ export default async function ProductScroll({ data }: { data: IProduct[] }) {
                   </div>
                   <div className="border border-green-400 ">
                     <p className="text-lg font-bold">{items.title}</p>
-                    <p className="font-bold text-slate-500">{items.price}</p>
+                    <p className="font-bold">$ {items.price}</p>
                   </div>
                 </div>
               </Link>
