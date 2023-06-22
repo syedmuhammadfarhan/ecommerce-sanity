@@ -1,14 +1,40 @@
-import Cart from "@/components/Cart";
-import { title } from "process";
+"use client";
 import React from "react";
+import { cartItems } from "@/drizzle/lib/drizzle";
+import { TiTrash } from "react-icons/Ti";
+import { useRouter } from "next/navigation";
 
-export default function page({ params }: { params: { cartitems: string } }) {
+const BASE_URL =
+  process.env.NODE_ENV == "development"
+    ? "http://localhost:3000"
+    : "https://todo-postgres-blue.vercel.app";
+
+export async function getData() {
+  try {
+    const res = await fetch(`${BASE_URL}/api/cart`, {
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    return await res.json();
+  } catch (error) {
+    console.log((error as { message: string }).message);
+  }
+}
+
+export default async function Cart() {
+  const { refresh } = useRouter();
+  const res: cartItems[] = await getData();
+  console.log(`cart page`, res);
+
   return (
     <div>
-      <Cart/>
-      {/* <div>
+      <div>
         <h1 className="text-xl font-extrabold mt-12 mb-6">Shopping Cart</h1>
       </div>
+          {res.map((items) => (
+    
       <div className="flex border border-red-400">
         <div className="flex-none border border-red-400 h-48 w-44 rounded-lg mr-5">
           image
@@ -31,7 +57,7 @@ export default function page({ params }: { params: { cartitems: string } }) {
           </div>
           <div className="border border-red-400 flex justify-between">
             <span>Quantity:</span>
-            <span>Product</span>
+            <span>{items.quantity}</span>
           </div>
           <div className="border border-red-400 flex justify-between">
             <span>Sub Total:</span>
@@ -41,7 +67,8 @@ export default function page({ params }: { params: { cartitems: string } }) {
             <button>Proceed to Checkout</button>
           </div>
         </div>
-      </div> */}
+      </div>
+))}
     </div>
   );
 }

@@ -6,12 +6,47 @@ import { IProduct } from "@/app/page";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/Ai";
 import { FiShoppingCart } from "react-icons/fi";
 import { sizeChart } from "@/Data/data";
+import { useRouter } from "next/navigation";
 
 export default function SoloImage({ data }: { data: IProduct[] }) {
   const [index, setIndex] = useState(0);
-  const handleClick = (i: number) => {
+  const [quantity, setQuantity] = useState(1);
+  const [size, setSize] = useState("");
+  const { refresh } = useRouter();
+  console.log(size);
+  const handleMouseEnter = (i: number) => {
     setIndex(i);
   };
+
+  const handleSize = (name: string) => {
+    setSize(name);
+  };
+
+  const quantityIncrement = () => {
+    setQuantity(quantity + 1);
+  };
+  const quantityDecrement = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const handleAddToCart = async () => {
+    try {
+      const res = await fetch("/api/cart", {
+        method: "POST",
+        body: JSON.stringify({
+          product_id: data[0]._id,
+          size: size,
+          quantity: quantity,
+        }),
+      });
+      refresh();
+    } catch (error) {
+      console.log("error");
+    }
+  };
+
   return (
     <div>
       {/* data is coming from soloproducts/[id]/page.tsx */}
@@ -26,7 +61,7 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
                 <div>
                   <Image
                     onMouseEnter={() => {
-                      handleClick(i);
+                      handleMouseEnter(i);
                     }}
                     className="max-h-[6.3rem] max-w-[6rem] object-cover"
                     src={urlForImage(images).url()}
@@ -56,10 +91,14 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
             <div className="border mb-6">
               <div className="text-md font-bold mb-2">SELECT SIZE</div>
               <div className="flex gap-x-5">
-                {sizeChart.map((items) => (
-                  <p className="border rounded-full w-9 h-9 text-slate-500 font-semibold flex items-center justify-center hover:bg-black hover:text-white cursor-pointer text-sm">
-                    {items.name}
-                  </p>
+                {sizeChart.map((items, i) => (
+                  <div
+                    key={i}
+                    className="border rounded-full w-9 h-9 text-slate-500 font-semibold flex items-center justify-center hover:bg-black hover:text-white cursor-pointer text-sm"
+                    onClick={() => handleSize(items.name)}
+                  >
+                    <p>{items.name}</p>
+                  </div>
                 ))}
               </div>
             </div>
@@ -67,22 +106,33 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
             <div className="flex gap-x-8 border mb-8">
               <div className="font-bold">Quantity:</div>
               <div className="flex">
-                <span className="border px-2 flex items-center hover:bg-black hover:text-white cursor-pointer">
+                <span
+                  className="border px-2 flex items-center hover:bg-black hover:text-white cursor-pointer"
+                  onClick={quantityDecrement}
+                >
                   <AiOutlineMinus />
                 </span>
-                <span className="border px-4 flex items-center">1</span>
-                <span className="border px-2 flex items-center hover:bg-black hover:text-white cursor-pointer">
+                <span className="border px-4 flex items-center">
+                  {quantity}
+                </span>
+                <span
+                  className="border px-2 flex items-center hover:bg-black hover:text-white cursor-pointer"
+                  onClick={quantityIncrement}
+                >
                   <AiOutlinePlus />
                 </span>
               </div>
             </div>
-              <div className="flex items-center gap-x-4">
-                <button className="flex justify-center items-center gap-x-2 border  rounded-lg  bg-black px-4 py-2 text-white text-sm  hover:scale-105 hover:ring-red-500 ring-1">
-                  <FiShoppingCart />
-                  Add to Cart
-                </button>
-                <p className="text-2xl font-bold">$ {data[0].price}</p>
-              </div>
+            <div className="flex items-center gap-x-4">
+              <button
+                className="flex justify-center items-center gap-x-2 border  rounded-lg  bg-black px-4 py-2 text-white text-sm  hover:scale-105 hover:ring-red-500 ring-1"
+                onClick={handleAddToCart}
+              >
+                <FiShoppingCart />
+                Add to Cart
+              </button>
+              <p className="text-2xl font-bold">$ {data[0].price}</p>
+            </div>
           </div>
         </div>
       }
