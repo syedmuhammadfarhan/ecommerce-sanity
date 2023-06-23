@@ -1,5 +1,5 @@
 "use client";
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { FiAlignRight, FiSearch, FiShoppingCart, FiX } from "react-icons/fi";
 import { navItems } from "@/Data/Navbar-data";
@@ -46,21 +46,23 @@ export default async function Navbar() {
           />
         </div>
         {/* cart */}
-        <Link href="/cart/cart">
-          <div className="relative w-11 h-11 rounded-full bg-gray-200 justify-center items-center hidden lg:flex">
-            <div className="absolute top-0 right-0 w-5 h-5 rounded-full bg-red-500 text-xs text-center place-items-center text-white">
-              {res.length}
+        <div>
+          <Link href="/cart/cartitems">
+            <div className="relative w-11 h-11 rounded-full bg-gray-200 justify-center items-center hidden lg:flex">
+              <div className="absolute top-0 right-0 w-5 h-5 rounded-full bg-red-500 text-xs text-center place-items-center text-white">
+                {res.length}
+              </div>
+              <FiShoppingCart size={20} />
             </div>
-            <FiShoppingCart size={20} />
-          </div>
-        </Link>
+          </Link>
+        </div>
         {/* Hamburger icon*/}
         <div onClick={() => setMobNav(!mobNav)} className="lg:hidden">
           <FiAlignRight size="25" className="cursor-pointer  my-1.5" />
         </div>
         {mobNav && (
           // <div className="fixed md:hidden left-0 top-0 w-full h-screen bg-black/70">
-          <div className="fixed  right-0 top-0 w-[100%] h-screen bg-white px-4 pt-6 ease-in duration-500">
+          <div className="fixed right-0 top-0 w-[100%] h-screen bg-white px-4 pt-6 ease-in duration-500">
             <div className="flex justify-between pt-4">
               <div>
                 <Image src="/Logo.png" alt="logo" width={140} height={40} />
