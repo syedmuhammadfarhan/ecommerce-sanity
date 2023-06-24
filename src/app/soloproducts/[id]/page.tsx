@@ -1,6 +1,6 @@
 import React from "react";
 import SoloImage from "@/components/SoloImage";
-import { IProduct, getProductData } from "@/app/page";
+import { IProduct, getProductData } from "@/components/cmsFetch";
 
 
 

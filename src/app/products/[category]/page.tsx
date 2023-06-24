@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { urlForImage } from "../../../../sanity/lib/image";
-import { IProduct, getProductData } from "@/app/page";
+import { IProduct, getProductData } from "@/components/cmsFetch";
 
 export default async function page({
   params,

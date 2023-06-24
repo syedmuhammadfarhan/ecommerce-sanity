@@ -2,11 +2,11 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { urlForImage } from "../../sanity/lib/image";
-import { IProduct } from "@/app/page";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/Ai";
 import { FiShoppingCart } from "react-icons/fi";
 import { sizeChart } from "@/Data/data";
 import { useRouter } from "next/navigation";
+import { IProduct } from "./cmsFetch";
 
 export default function SoloImage({ data }: { data: IProduct[] }) {
   const [index, setIndex] = useState(0);
@@ -53,7 +53,7 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
       {
         <div className="flex gap-x-8 pt-24">
           <div>
-            {data[0].image.map((images, i) => (
+            {data[0].image.map((images:any, i: number) => (
               <div
                 key={i}
                 className="border border-red-400 w-24 h-[6.3rem] overflow-hidden mb-4"
