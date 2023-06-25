@@ -9,10 +9,10 @@ export default async function Home() {
 
   return (
     <div>
-      {/* <Hero /> */}
-      {/* <Promotions /> */}
-      {/* <Products data={data} /> */}
-      {/* <Newsletter /> */}
+      <Hero />
+      <Promotions />
+      <Products data={data} />
+      <Newsletter />
     </div>
   );
 }

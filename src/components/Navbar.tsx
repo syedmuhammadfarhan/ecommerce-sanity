@@ -1,17 +1,17 @@
 import React from "react";
 import Image from "next/image";
 import { FiSearch } from "react-icons/fi";
-import { navItems } from "@/Data/Navbar-data";
+import { navItems } from "../Data/Navbar-data";
 import Link from "next/link";
-import CartButton from "./CartButton";
-import { getData } from "./dbFetch";
-import { cartItems } from "@/drizzle/lib/drizzle";
+import CartButton from "../components/CartButton";
+import { getData } from "../components/dbFetch";
+import { cartItems } from "../drizzle/lib/drizzle";
 import { cookies } from "next/headers";
-import Hamburger from "./Hamburger";
+import Hamburger from "../components/Hamburger";
 
 export default async function Navbar() {
   const res: cartItems[] = await getData();
-  console.log(`NavCart`, res.length);
+  // console.log(`NavCart`, res.length);
   const cookiesuid = cookies().get("user_id")?.value;
 
   return (
