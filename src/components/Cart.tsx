@@ -121,7 +121,7 @@ export default async function Cart({
                             ))}
                         </div>
                         <div
-                          className="hover:scale-105"
+                          className="hover:scale-105 cursor-pointer"
                           onClick={() => handleDelete(mapitems.product_id)}
                         >
                           <TiTrash size={25} />
