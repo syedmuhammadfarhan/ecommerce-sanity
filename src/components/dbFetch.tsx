@@ -7,7 +7,7 @@
 
 export async function getData() {
   try {
-    const res = await fetch(`http://localhost:3000/cart`, {
+    const res = await fetch(`http://localhost:3000/api/cart`, {
       cache: "no-store",
     });
     if (!res.ok) {

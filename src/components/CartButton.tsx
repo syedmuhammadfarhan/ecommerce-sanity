@@ -1,4 +1,3 @@
-
 import { cartItems } from "@/drizzle/lib/drizzle";
 import Link from "next/link";
 import React from "react";
@@ -11,7 +10,6 @@ export default async function CartButton({
   res: cartItems[];
   cookiesuid: string | undefined;
 }) {
-
   return (
     <div>
       <Link href="/cart/cartitems">

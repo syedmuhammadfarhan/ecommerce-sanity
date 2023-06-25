@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/Ai";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 export default function QuantityButton() {
   const [quantity, setQuantity] = useState(1);

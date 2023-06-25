@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { urlForImage } from "../../sanity/lib/image";
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/Ai";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import { sizeChart } from "@/Data/data";
 import { useRouter } from "next/navigation";

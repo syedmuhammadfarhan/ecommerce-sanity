@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { cartItems } from "@/drizzle/lib/drizzle";
-import { TiTrash } from "react-icons/Ti";
+import { TiTrash } from "react-icons/ti";
 import { useRouter } from "next/navigation";
 import QuantityButton from "../components/QuantityButton";
 import { IProduct, getProductData } from "../components/cmsFetch";
