@@ -1,11 +1,14 @@
 import Cart from "@/components/Cart";
-import { title } from "process";
+import { cookies } from "next/headers";
 import React from "react";
 
 export default function page({ params }: { params: { cartitems: string } }) {
+  const cookiesuid = cookies().get("user_id")?.value;
+  
+
   return (
     <div>
-      <Cart/>
+      <Cart cookiesuid={cookiesuid } />
       {/* <div>
         <h1 className="text-xl font-extrabold mt-12 mb-6">Shopping Cart</h1>
       </div>

@@ -1,14 +1,19 @@
+"use client";
 import { navItems } from "@/Data/Navbar-data";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { FiAlignRight, FiX, FiShoppingCart } from "react-icons/fi";
-import CartButton from "./CartButton";
 import { cartItems } from "@/drizzle/lib/drizzle";
 
-export default function Hambuger({ res }: { res: cartItems[] }) {
+export default function Hamburger(
+  { res, cookiesuid }: { res: cartItems[]; cookiesuid: string | undefined },
+  
+) {
   const [mobNav, setMobNav] = useState(false);
-  console.log(`this is mobNav`, mobNav);
+  console.log(`this is mobNav from hamburger page`, mobNav);
+
+  console.log(`this is from hamburger page`, cookiesuid);
 
   return (
     <div>
@@ -44,7 +49,8 @@ export default function Hambuger({ res }: { res: cartItems[] }) {
             >
               <div className=" relative w-11 h-11 rounded-full bg-gray-200 flex justify-center items-center my-3">
                 <div className="absolute top-0 right-0 w-4 h-4 rounded-full bg-red-500 text-xs text-center place-items-center text-white">
-                  {res.length}
+                  {/* {res.length} */}
+                  {res.filter((items) => items.user_id === cookiesuid).length}
                 </div>
                 <FiShoppingCart size={20} />
               </div>

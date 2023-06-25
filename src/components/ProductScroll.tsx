@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { urlForImage } from "../../sanity/lib/image";
 import Link from "next/link";
-import { IProduct } from "@/app/page";
+import { IProduct } from "../components/cmsFetch";
 
 export default async function ProductScroll({ data }: { data: IProduct[] }) {
   return (

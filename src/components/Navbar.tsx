@@ -1,17 +1,19 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
-import { FiAlignRight, FiSearch, FiShoppingCart, FiX } from "react-icons/fi";
+import { FiSearch } from "react-icons/fi";
 import { navItems } from "@/Data/Navbar-data";
 import Link from "next/link";
-import Hambuger from "./Hambuger";
 import CartButton from "./CartButton";
 import { getData } from "./dbFetch";
 import { cartItems } from "@/drizzle/lib/drizzle";
+import { cookies } from "next/headers";
+import Hamburger from "./Hamburger";
 
 export default async function Navbar() {
   const res: cartItems[] = await getData();
   console.log(`NavCart`, res.length);
+  const cookiesuid = cookies().get("user_id")?.value;
+
   return (
     <>
       <div className="border pt-8 pb-2 px-2 flex justify-between">
@@ -30,7 +32,10 @@ export default async function Navbar() {
         <div className="hidden lg:flex justify-between items-center gap-x-20">
           {navItems.map((items: { navList: string; href: string }, i) => {
             return (
-              <div key={i} className="text-md lg:text-md">
+              <div
+                key={i}
+                className="text-md lg:text-md hover:italic hover:scale-105 rounded-md "
+              >
                 <Link href={items.href}>{items.navList}</Link>
               </div>
             );
@@ -47,10 +52,10 @@ export default async function Navbar() {
         </div>
         {/* cart */}
         <div>
-          <CartButton res={res} />
+          <CartButton res={res} cookiesuid={cookiesuid} />
         </div>
         {/* Hamburger icon*/}
-        <Hambuger res={res} />
+        <Hamburger res={res} cookiesuid={cookiesuid} />
       </div>
     </>
   );
