@@ -46,11 +46,13 @@ export default async function Cart({
       console.log("An error occurred during the delete request:", error);
     }
   };
+
   let PQ = res.map((mapitems) =>
     data
       .filter((filteritems) => filteritems._id === mapitems.product_id)
       .map((filtermapitems) => filtermapitems.price * mapitems.quantity)
   );
+
   console.log(`PQ`, PQ);
 
   let subTotalofPQ = 0;

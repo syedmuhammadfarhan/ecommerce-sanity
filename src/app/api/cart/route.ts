@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db, cartTable } from "../../../drizzle/lib/drizzle";
-import { sql } from "@vercel/postgres";
 import {v4} from "uuid"
 import { cookies } from "next/headers";
 import { eq } from "drizzle-orm";
