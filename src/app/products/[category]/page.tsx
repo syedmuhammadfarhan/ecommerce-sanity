@@ -39,7 +39,7 @@ export default async function page({
                   <div className="text-slate-400 font-bold">
                     {items.generic.name}
                   </div>
-                  <div className="text-lg font-bold">$ {items.price}</div>
+                  <div className="font-bold">$ {items.price}</div>
                 </Link>
               ))}
           </div>
@@ -67,9 +67,11 @@ export default async function page({
                   height={300}
                 />
               </div>
-              <div>{items.title}</div>
-              <div>{items.generic.name}</div>
-              <div>{items.price}</div>
+              <div className="font-bold">{items.title}</div>
+              <div className="text-slate-400 font-bold">
+                {items.generic.name}
+              </div>
+              <div className="font-bold">{items.price}</div>
             </Link>
           ))}
         </div>

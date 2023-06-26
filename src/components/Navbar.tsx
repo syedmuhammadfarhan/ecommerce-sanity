@@ -19,7 +19,7 @@ export default async function Navbar() {
       <div className="border pt-8 pb-2 px-2 flex justify-between">
         {/* logo */}
         <Link href="/" passHref>
-          <div className="py-[0.45rem] bg-red-400">
+          <div className="py-[0.45rem]">
             <Image
               src="/Logo.png"
               alt="dinemartlogo"

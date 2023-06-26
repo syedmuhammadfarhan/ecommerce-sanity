@@ -63,21 +63,21 @@ export default async function Cart({
 
   return (
     <div>
-      {res.length ? (
+      {res.filter((items) => items.user_id === cookiesuid).length ? (
         <>
           <div>
             <h1 className="text-xl font-extrabold mt-12 mb-6">Shopping Cart</h1>
           </div>
-          <div className="border border-blue-400 md:flex flex-between">
+          <div className="md:flex flex-between">
             {/* product details */}
 
-            <div className="border border-black flex flex-col flex-between w-full">
+            <div className="flex flex-col flex-between w-full gap-2">
               {res
                 .filter((items) => items.user_id === cookiesuid)
                 .map((mapitems, i) => (
                   <div
                     key={i}
-                    className="flex flex-col md:flex-row border border-green-500 p-1"
+                    className="flex flex-col md:flex-row border border-slate-200 rounded-lg p-2"
                   >
                     <div>
                       {data
@@ -87,7 +87,7 @@ export default async function Cart({
                         .map((map2item, i) => (
                           <div
                             key={i}
-                            className="flex overflow-hidden object-cover border border-red-400 h-24 w-20 md:h-48 md:w-44 rounded-lg"
+                            className="flex overflow-hidden object-cover  h-24 w-20 md:h-48 md:w-44 rounded-lg"
                           >
                             <Image
                               src={urlForImage(map2item.image[0]).url()}
@@ -98,7 +98,7 @@ export default async function Cart({
                           </div>
                         ))}
                     </div>
-                    <div className="md:ml-5 ml-0 border border-red-400 rounded-lg w-full flex flex-col justify-between">
+                    <div className="md:ml-5 ml-0  rounded-lg w-full flex flex-col justify-between">
                       <div className="flex justify-between">
                         <div>
                           {data
@@ -136,7 +136,7 @@ export default async function Cart({
                         </div>
                       </div>
                       {/* price and quantity div */}
-                      <div className="border flex justify-between">
+                      <div className="flex justify-between">
                         <div className="text-xs text-slate-500 flex items-center justify-center gap-x-6">
                           <div>Qty: {mapitems.quantity}</div>{" "}
                           <div> Size: {mapitems.size}</div>
@@ -149,18 +149,18 @@ export default async function Cart({
                 ))}
             </div>
             {/* order summary div */}
-            <div className="bg-gray-300 rounded-lg mt-2 md:mt-0 flex justify-center">
-              <div className="p-2 w-64 h-48 flex flex-col justify-between border-2">
-                <div className="border border-red-400">
+            <div className="bg-gray-300 rounded-lg md:mt-0 mt-3 flex md:justify-center mx-2">
+              <div className="p-2 w-[100%] max-w-full md:w-64 h-48 flex flex-col justify-between">
+                <div >
                   <h2 className="md:text-xl font-bold">Order Summary</h2>
                 </div>
-                <div className="border border-red-400 flex justify-between">
+                <div className="flex justify-between border-b">
                   <div>Items in Cart:</div>
                   <div className="text-red-600 font-bold">
                     {res.filter((items) => items.user_id === cookiesuid).length}
                   </div>
                 </div>
-                <div className="border border-red-400 flex justify-between">
+                <div className="flex justify-between border-b">
                   <div>Sub Total:</div>
                   <div className="text-red-600 font-bold">$ {subTotalofPQ}</div>
                 </div>
