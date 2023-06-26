@@ -12,12 +12,12 @@ export default async function CartButton({
 }) {
   return (
     <div>
-      <Link href="/cart/cartitems">
+      <Link href="/cart/cartitems" passHref>
         <div className="relative w-11 h-11 rounded-full bg-gray-200 justify-center items-center hidden lg:flex">
-          <div className="absolute top-0 right-0 w-4 h-4 rounded-full bg-red-500 text-xs text-center place-items-center text-white">
+          <div className="absolute top-0 right-0 w-4 h-4 rounded-full bg-red-500 text-xs text-center place-items-center text-white hover:scale-105">
             {res.filter((items) => items.user_id === cookiesuid).length}
           </div>
-          <FiShoppingCart size={20} />
+          <FiShoppingCart size={20} className="hover:scale-105" />
         </div>
       </Link>
     </div>

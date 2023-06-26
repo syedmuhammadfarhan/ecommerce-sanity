@@ -21,7 +21,7 @@ export default function Hero() {
             Anyone can beat you but no one can beat your outfit as long as you
             wear Dine outfits.
           </p>
-          <Link href="" className="">
+          <Link href="products/Allproducts" passHref>
             <button
               type="button"
               className="flex justify-between items-center gap-3 bg-black px-4 py-2 text-white text-center font-bold text-md border-2 border-gray-400"
@@ -58,15 +58,14 @@ export default function Hero() {
           </div>
         </div>
         <div className="border hidden md:flex flex-1 justify-center w-[40rem] h-[37rem]">
-          <div className="bg-[#FFECE3] relative w-[37rem] h-[37rem] rounded-full flex-1">
-          </div>
-            <Image
-              src="/header.png"
-              alt="hero"
-              width={680}
-              height={500}
-              className="absolute top-[7rem]"
-            />
+          <div className="bg-[#FFECE3] relative w-[37rem] h-[37rem] rounded-full flex-1"></div>
+          <Image
+            src="/header.png"
+            alt="hero"
+            width={680}
+            height={500}
+            className="absolute top-[7rem]"
+          />
         </div>
       </div>
     </>

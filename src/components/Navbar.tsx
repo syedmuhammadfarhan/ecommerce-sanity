@@ -18,7 +18,7 @@ export default async function Navbar() {
     <>
       <div className="border pt-8 pb-2 px-2 flex justify-between">
         {/* logo */}
-        <Link href="/">
+        <Link href="/" passHref>
           <div className="py-[0.45rem] bg-red-400">
             <Image
               src="/Logo.png"
@@ -36,7 +36,9 @@ export default async function Navbar() {
                 key={i}
                 className="text-md lg:text-md hover:italic hover:scale-105 rounded-md "
               >
-                <Link href={items.href}>{items.navList}</Link>
+                <Link href={items.href} passHref>
+                  {items.navList}
+                </Link>
               </div>
             );
           })}

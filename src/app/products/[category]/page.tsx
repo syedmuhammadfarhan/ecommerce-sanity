@@ -24,6 +24,7 @@ export default async function page({
                 <Link
                   key={i}
                   href={`/soloproducts/${items._id}`}
+                  passHref
                   className="border border-green-400"
                 >
                   <div className="border w-60 h-64">
@@ -55,6 +56,7 @@ export default async function page({
             <Link
               key={i}
               href={`/soloproducts/${items._id}`}
+              passHref
               className="border border-green-400"
             >
               <div className="border w-60 h-64">

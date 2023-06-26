@@ -43,6 +43,7 @@ export default function Hamburger(
             {/* cart button */}
             <Link
               href="/cart/cartitems"
+              passHref
               onClick={() => {
                 setMobNav(!mobNav);
               }}
