@@ -8,7 +8,7 @@ const Newsletter = () => {
 
   return (
     <div className="border pt-[10rem] pb-2 flex flex-col justify-center items-center relative z-10 px-2 gap-1">
-      <div className="text-[#f2f3f7] text-6xl md:text-9xl font-bold absolute -z-10">
+      <div className="text-[#f2f3f7] text-5xl md:text-9xl font-bold absolute -z-10">
         Newsletter
       </div>
       <center className="flex flex-col justify-center items-center">
@@ -21,7 +21,7 @@ const Newsletter = () => {
         <div className="flex flex-col justify-center items-center gap-y-4">
           <div>
             <input
-              className="border border-black  w-80 max-w-7xl py-[10px] text-sm rounded-lg"
+              className="border border-black  md:w-80 md:max-w-7xl py-[10px] text-sm rounded-lg px-2 flex flex-initial"
               type="email"
               placeholder="Enter email address"
             ></input>
@@ -29,7 +29,7 @@ const Newsletter = () => {
           <div>
             <button
               type="submit"
-              className="bg-black px-4 py-2 text-white rounded-lg"
+              className="bg-black px-4 py-2 text-white rounded-lg flex-initial"
             >
               Get Started
             </button>

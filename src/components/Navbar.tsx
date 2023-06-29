@@ -16,7 +16,7 @@ export default async function Navbar() {
 
   return (
     <>
-      <div className="border pt-8 pb-2 px-2 flex justify-between">
+      <div className="border pt-3 pb-2 px-2 flex justify-between">
         {/* logo */}
         <Link href="/" passHref>
           <div className="py-[0.45rem]">
@@ -53,11 +53,13 @@ export default async function Navbar() {
           />
         </div>
         {/* cart */}
-        <div>
+        <div className="relative">
           <CartButton res={res} cookiesuid={cookiesuid} />
         </div>
         {/* Hamburger icon*/}
-        <Hamburger res={res} cookiesuid={cookiesuid} />
+        <div className="lg:absolute">
+          <Hamburger res={res} cookiesuid={cookiesuid} />
+        </div>
       </div>
     </>
   );

@@ -17,7 +17,7 @@ export default async function page({
       {params.category !== "Allproducts" &&
         (data.filter((items) => items.category.name === params.category)
           .length ? (
-          <div className="border border-red-500 flex flex-wrap justify-center md:justify-normal gap-[3.79rem] pt-20">
+          <div className="flex flex-wrap justify-center gap-[3.65rem] pt-20 px-2">
             {data
               .filter((items) => items.category.name === params.category)
               .map((items: IProduct, i) => (
@@ -25,9 +25,9 @@ export default async function page({
                   key={i}
                   href={`/soloproducts/${items._id}`}
                   passHref
-                  className="border border-green-400"
+                  // className="border border-slate-400"
                 >
-                  <div className="border w-60 h-64">
+                  <div className="border lg:w-60 lg:h-64 rounded-lg overflow-hidden">
                     <Image
                       src={urlForImage(items.image[0]).url()}
                       alt="productimage"
@@ -35,11 +35,13 @@ export default async function page({
                       height={300}
                     />
                   </div>
-                  <div className="font-bold">{items.title}</div>
-                  <div className="text-slate-400 font-bold">
-                    {items.generic.name}
+                  <div className="p-1">
+                    <div className="font-bold">{items.title}</div>
+                    <div className="text-slate-400 font-bold">
+                      {items.generic.name}
+                    </div>
+                    <div className="font-bold">$ {items.price}</div>
                   </div>
-                  <div className="font-bold">$ {items.price}</div>
                 </Link>
               ))}
           </div>
@@ -51,15 +53,15 @@ export default async function page({
 
       {/* for all products */}
       {params.category === "Allproducts" && (
-        <div className="border border-red-500 flex flex-wrap justify-center md:justify-normal gap-[3.79rem] pt-20">
+        <div className="flex flex-wrap justify-center gap-[3.65rem] pt-20 px-2">
           {data.map((items: IProduct, i) => (
             <Link
               key={i}
               href={`/soloproducts/${items._id}`}
               passHref
-              className="border border-green-400"
+              // className="border border-slate-400 rounded-lg overflow-hidden"
             >
-              <div className="border w-60 h-64">
+              <div className="border lg:w-60 lg:h-64 rounded-lg overflow-hidden">
                 <Image
                   src={urlForImage(items.image[0]).url()}
                   alt="productimage"
@@ -67,11 +69,13 @@ export default async function page({
                   height={300}
                 />
               </div>
-              <div className="font-bold">{items.title}</div>
-              <div className="text-slate-400 font-bold">
-                {items.generic.name}
+              <div className="p-1">
+                <div className="font-bold">{items.title}</div>
+                <div className="text-slate-400 font-bold">
+                  {items.generic.name}
+                </div>
+                <div className="font-bold">{items.price}</div>
               </div>
-              <div className="font-bold">{items.price}</div>
             </Link>
           ))}
         </div>

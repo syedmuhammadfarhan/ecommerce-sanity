@@ -47,11 +47,14 @@ export default async function Cart({
     }
   };
 
-  let PQ = res.map((mapitems) =>
-    data
-      .filter((filteritems) => filteritems._id === mapitems.product_id)
-      .map((filtermapitems) => filtermapitems.price * mapitems.quantity)
-  );
+  let PQ = res
+    .filter((items) => items.user_id === cookiesuid)
+    .map((mapitems) =>
+      data
+        .filter((filteritems) => filteritems._id === mapitems.product_id)
+        .map((filtermapitems) => filtermapitems.price * mapitems.quantity)
+    );
+  // let PQ = res.filter((items) => items.user_id === cookiesuid);
 
   console.log(`PQ`, PQ);
 
@@ -143,7 +146,7 @@ export default async function Cart({
                           <div>Qty: {mapitems.quantity}</div>{" "}
                           <div> Size: {mapitems.size}</div>
                         </div>
-                        <QuantityButton />
+                        {/* <QuantityButton /> */}
                       </div>
                       {/* price and quantity div ends */}
                     </div>

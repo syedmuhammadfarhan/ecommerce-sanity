@@ -29,8 +29,9 @@ export default function Hero() {
               Start Shopping
             </button>
           </Link>
-          <div className="flex flex-wrap gap-x-16 gap-y-6 md:gap-x-9 p-1">
+          <div className="flex flex-wrap gap-x-14 gap-y-6 md:gap-x-9 p-1">
             <Image
+              className="flex flex-1"
               src="/Featured1.png"
               alt="Feature1"
               width={100}
@@ -43,6 +44,7 @@ export default function Hero() {
               height={90}
             ></Image>
             <Image
+              className="flex flex-1"
               src="/Featured3.png"
               alt="Feature1"
               width={100}
@@ -57,13 +59,13 @@ export default function Hero() {
           </div>
         </div>
         <div className="border hidden lg:flex flex-1 justify-center w-[40rem] h-[37rem]">
-          <div className="bg-[#FFECE3] relative w-[37rem] h-[37rem] rounded-full flex-1"></div>
+          <div className="bg-[#FFECE3] relative w-[36rem] h-[36rem] rounded-full flex-1"></div>
           <Image
             src="/header.png"
             alt="hero"
             width={680}
             height={500}
-            className="absolute top-[7rem]"
+            className="absolute top-[5rem]"
           />
         </div>
       </div>

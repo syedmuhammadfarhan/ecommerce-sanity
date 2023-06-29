@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   const req = await request.json();
-  console.log(`this is POST req`,req)
+  // console.log(`this is POST req`,req)
   const uid = v4();
   if (!cookies().get("user_id")) {
     cookies().set("user_id", uid)
