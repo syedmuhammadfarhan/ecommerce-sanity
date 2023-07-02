@@ -121,11 +121,12 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
                           (filteritem) => filteritem._id === mapitems.product_id
                         )
                         .map((map2item, i) => (
-                          <Link href={`/soloproducts/${map2item._id}`} passHref>
-                            <div
-                              key={i}
-                              className="flex overflow-hidden object-cover h-16 w-16 md:h-48 md:w-44 rounded-lg"
-                            >
+                          <Link
+                            key={i}
+                            href={`/soloproducts/${map2item._id}`}
+                            passHref
+                          >
+                            <div className="flex overflow-hidden object-cover h-16 w-16 md:h-48 md:w-44 rounded-lg">
                               <Image
                                 src={urlForImage(map2item.image[0]).url()}
                                 alt="productimage"
@@ -145,7 +146,10 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
                                 filteritem._id === mapitems.product_id
                             )
                             .map((mapitem, i) => (
-                              <div key={i} className="flex flex-col gap-y-1 py-1">
+                              <div
+                                key={i}
+                                className="flex flex-col gap-y-1 py-1"
+                              >
                                 <Link
                                   href={`/soloproducts/${mapitem._id}`}
                                   passHref
@@ -170,7 +174,7 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
                           <TiTrash size={25} />
                         </div>
                       </div>
-                      
+
                       <div className="flex flex-col gap-y-1">
                         <div className="font-extrabold text-sm">
                           Delivery Estimation
@@ -200,13 +204,13 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
                 </div>
                 <div className="flex justify-between border-b">
                   <div>Items in Cart:</div>
-                  <div className="text-red-600 font-bold">
-                    {qSum}
-                  </div>
+                  <div className="text-red-600 font-bold">{qSum}</div>
                 </div>
                 <div className="flex justify-between border-b">
                   <div>Sub Total:</div>
-                  <div className="text-red-600 font-bold animate-pulse">$ {subTotalofPQ}</div>
+                  <div className="text-red-600 font-bold animate-pulse">
+                    $ {subTotalofPQ}
+                  </div>
                 </div>
                 <div
                   className="border bg-black text-white p-2 rounded-lg text-sm text-center hover:scale-95 hover:ring-red-500 ring-1 cursor-pointer"

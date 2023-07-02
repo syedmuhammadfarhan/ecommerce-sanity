@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { BsBagCheckFill } from "react-icons/bs";
 
 
 const successPay = () => {
 
-  useEffect(() => {
+  // useEffect(() => {
 
       
-  }, []);
+  // }, []);
 
   return (
     <div className="success">
