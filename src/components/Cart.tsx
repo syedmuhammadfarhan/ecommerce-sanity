@@ -10,39 +10,14 @@ import { urlForImage } from "../../sanity/lib/image";
 import Image from "next/image";
 import getStripePromise from "@/lib/stripe";
 
-export default async function Cart({
-  cookiesuid,
-}: {
+type CookiesUid = {
   cookiesuid: string | undefined;
-}) {
+};
+
+export default async function Cart({ cookiesuid }: CookiesUid) {
   const { refresh } = useRouter();
   const res: cartItems[] = await getData();
-
   const data: IProduct[] = await getProductData();
-
-  const resFilter = res.filter(
-    (items: cartItems) => items.user_id === cookiesuid
-  );
-
-const newArray = resFilter.map((map1items)=> data
-                        .filter(
-                          (filteritem) => filteritem._id === map1items.product_id
-                        )
-  .map((map2item, i) => (map2item.title))).map((items)=> items[0])[0]
-  
-  console.log(
-    `newArray`,
-    resFilter
-      .map((map1items) =>
-        data
-          .filter((filteritem) => filteritem._id === map1items.product_id)
-          .map((map2item, i) => map2item.price)
-      )
-      .map((items) => items[0])[1]
-  );
-  
-
-  
 
   // delete api
   const handleDelete = async (product_id: string) => {
