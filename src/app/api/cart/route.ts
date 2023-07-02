@@ -10,6 +10,7 @@ export async function GET(request: NextRequest) {
     // await sql`CREATE TABLE IF NOT EXISTS Todos(id serial primary key, Task varchar(255))`;
 
     const resGET = await db.select().from(cartTable);
+    // const resGET = await db.select().from(cartTable).where(eq(cartTable.user_id, cookies().get("user_id")?.value as string));
     return NextResponse.json(resGET);
   } catch (error) {
     console.log((error as { message: string }).message);

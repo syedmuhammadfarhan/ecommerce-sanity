@@ -19,7 +19,7 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
   const res: cartItems[] = await getData();
   const data: IProduct[] = await getProductData();
 
-  // delete api
+  // delete api handle
   const handleDelete = async (product_id: string) => {
     try {
       if (product_id) {
