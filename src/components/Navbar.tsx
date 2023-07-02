@@ -11,12 +11,17 @@ import Hamburger from "../components/Hamburger";
 
 export default async function Navbar() {
   const res: cartItems[] = await getData();
-  // console.log(`NavCart`, res.length);
   const cookiesuid = cookies().get("user_id")?.value;
+  console.log(
+    `NavCart`,
+    res.filter((items) => items.user_id === cookiesuid).map((items)=> items.quantity)
+  );
+
+
 
   return (
     <>
-      <div className="border pt-3 pb-2 px-2 flex justify-between">
+      <div className=" pt-3 pb-2 px-2 flex justify-between">
         {/* logo */}
         <Link href="/" passHref>
           <div className="py-[0.45rem]">

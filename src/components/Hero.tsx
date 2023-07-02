@@ -8,8 +8,8 @@ import { FiShoppingCart } from "react-icons/fi";
 export default function Hero() {
   return (
     <>
-      <div className="border flex flex-1 justify-between gap-[2rem] pt-16">
-        <div className="flex flex-1 flex-col border border-red-400 pl-1 py-10 space-y-10">
+      <div className=" flex flex-1 justify-between gap-[2rem] pt-16">
+        <div className="flex flex-1 flex-col pl-1 py-10 space-y-10">
           <span className="bg-[#e1edff] font-[600] text-indigo-700 text-lg py-2 px-6 rounded-md max-w-fit">
             Sale 70%
           </span>
@@ -23,7 +23,7 @@ export default function Hero() {
           <Link href="products/Allproducts" passHref>
             <button
               type="button"
-              className="flex justify-between items-center gap-3 bg-black px-4 py-2 text-white text-center font-bold text-md border-2 border-gray-400"
+              className="flex justify-between items-center gap-3 bg-black px-4 py-2 text-white text-center font-bold text-md"
             >
               <FiShoppingCart size={20} color="white" />
               Start Shopping
@@ -31,7 +31,7 @@ export default function Hero() {
           </Link>
           <div className="flex flex-wrap gap-x-14 gap-y-6 md:gap-x-9 p-1">
             <Image
-              className="flex flex-1"
+              className=""
               src="/Featured1.png"
               alt="Feature1"
               width={100}
@@ -44,7 +44,7 @@ export default function Hero() {
               height={90}
             ></Image>
             <Image
-              className="flex flex-1"
+              className=""
               src="/Featured3.png"
               alt="Feature1"
               width={100}
@@ -58,7 +58,7 @@ export default function Hero() {
             ></Image>
           </div>
         </div>
-        <div className="border hidden lg:flex flex-1 justify-center w-[40rem] h-[37rem]">
+        <div className=" hidden lg:flex flex-1 justify-center w-[40rem] h-[37rem]">
           <div className="bg-[#FFECE3] relative w-[36rem] h-[36rem] rounded-full flex-1"></div>
           <Image
             src="/header.png"

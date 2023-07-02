@@ -5,19 +5,26 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { FiAlignRight, FiX, FiShoppingCart } from "react-icons/fi";
 import { cartItems } from "@/lib/drizzle";
+import { CookiesUid } from "./CartButton";
 
 export default function Hamburger({
   res,
   cookiesuid,
 }: {
   res: cartItems[];
-  cookiesuid: string | undefined;
+  cookiesuid: CookiesUid;
 }) {
   const [mobNav, setMobNav] = useState(false);
-  console.log(`this is mobNav from hamburger page`, mobNav);
 
-  console.log(`this is from hamburger page`, cookiesuid);
+    let qArray = res
+      .filter((items) => items.user_id === cookiesuid)
+      .map((items) => items.quantity);
 
+    let qSum = 0;
+
+    for (let i = 0; i < qArray.length; i++) {
+      qSum += qArray[i];
+    }
   return (
     <div>
       <div onClick={() => setMobNav(!mobNav)} className="lg:hidden">
@@ -62,7 +69,7 @@ export default function Hamburger({
               <div className=" relative w-11 h-11 rounded-full bg-gray-200 flex justify-center items-center my-3">
                 <div className="absolute top-0 right-0 w-4 h-4 rounded-full bg-red-500 text-xs text-center place-items-center text-white">
                   {/* {res.length} */}
-                  {res.filter((items) => items.user_id === cookiesuid).length}
+                  {qSum}
                 </div>
                 <FiShoppingCart size={20} />
               </div>

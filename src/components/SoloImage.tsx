@@ -13,7 +13,7 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState("");
   const { refresh } = useRouter();
-  // console.log(size);
+  
   const handleMouseEnter = (i: number) => {
     setIndex(i);
   };
@@ -60,7 +60,7 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
               {data[0].image.map((images: any, i: number) => (
                 <div
                   key={i}
-                  className="border border-red-400 lg:w-24 lg:h-[6.3rem] overflow-hidden mb-4"
+                  className="border border-slate-400 rounded-sm md:rounded-lg lg:w-24 lg:h-[6.3rem] overflow-hidden mb-4"
                 >
                   <div className="flex flex-1">
                     <Image
@@ -78,7 +78,7 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
               ))}
             </div>
 
-            <div className="flex border border-red-400 md:w-[40rem] md:h-[42rem] overflow-hidden">
+            <div className="flex border border-slate-400 rounded-lg md:w-[40rem] md:h-[42rem] overflow-hidden">
               <Image
                 className="md:max-h-[42rem] md:max-w-[40rem] object-cover"
                 src={urlForImage(data[0].image[index]).url()}
@@ -89,20 +89,20 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
             </div>
           </div>
           {/* 3rd column of solo product page */}
-          <div className="border border-red-400 mb-2 lg:mb-0 mt-2 lg:mt-0 p-2">
+          <div className="border border-slate-400  h-fit rounded-lg mb-2 lg:mb-0 mt-2 lg:mt-0 p-2 mx-2">
             <div className="text-lg md:text-2xl font-extrabold mb-1">
               {data[0].title}
             </div>
             <div className="md:text-lg text-slate-400 font-bold mb-6">
               {data[0].generic.name}
             </div>
-            <div className="border mb-6">
+            <div className=" mb-6">
               <div className="text-sm font-bold mb-2">Select Size</div>
               <div className="flex gap-x-5">
                 {sizeChart.map((items, i) => (
                   <div
                     key={i}
-                    className="border rounded-full w-7 h-7 text-slate-500 font-semibold flex items-center justify-center hover:bg-black hover:text-white cursor-pointer text-sm"
+                    className="border rounded-full w-7 h-7 text-slate-500 font-semibold flex items-center justify-center hover:bg-black hover:text-white cursor-pointer text-xs"
                     onClick={() => handleSize(items.name)}
                   >
                     <p>{items.name}</p>
@@ -111,7 +111,7 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
               </div>
             </div>
 
-            <div className="flex justify-between items-center gap-x-8 border mb-8">
+            <div className="flex justify-between items-center gap-x-8  mb-8">
               <div className="text-sm font-bold">Quantity:</div>
               <div className="flex">
                 <span
@@ -131,15 +131,17 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
                 </span>
               </div>
             </div>
-            <div className="flex items-center gap-x-4">
-              <button
-                className="flex justify-center items-center gap-y-2 md:gap-x-2 border rounded-lg bg-black px-4 py-2 text-white text-xs md:text-sm  hover:scale-95 hover:ring-red-500 ring-1"
+            <div className="flex justify-between items-center">
+              <div
+                className="flex justify-center items-center gap-x-3 border rounded-lg bg-black px-3 py-2 text-white text-xs md:text-sm  hover:scale-95 hover:ring-red-500 ring-1"
                 onClick={handleAddToCart}
               >
                 <FiShoppingCart size={18} />
                 Add to Cart
-              </button>
-              <p className="text-2xl font-bold">$ {data[0].price}</p>
+              </div>
+              <div>
+                <p className="text-xl font-bold">$ {data[0].price}</p>
+              </div>
             </div>
           </div>
         </div>

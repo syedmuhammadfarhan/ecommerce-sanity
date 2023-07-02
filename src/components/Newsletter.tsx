@@ -7,7 +7,7 @@ const Newsletter = () => {
   };
 
   return (
-    <div className="border pt-[10rem] pb-2 flex flex-col justify-center items-center relative z-10 px-2 gap-1">
+    <div className=" pt-[10rem] pb-2 flex flex-col justify-center items-center relative z-10 px-2 gap-1">
       <div className="text-[#f2f3f7] text-5xl md:text-9xl font-bold absolute -z-10">
         Newsletter
       </div>

@@ -9,6 +9,7 @@ import { getData } from "./dbFetch";
 import { urlForImage } from "../../sanity/lib/image";
 import Image from "next/image";
 import getStripePromise from "@/lib/stripe";
+import Link from "next/link";
 
 type CookiesUid = {
   cookiesuid: string | undefined;
@@ -59,6 +60,19 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
     subTotalofPQ += PQ[i][0];
   }
 
+
+  // items in cart
+
+      let qArray = res
+        .filter((items) => items.user_id === cookiesuid)
+        .map((items) => items.quantity);
+
+      let qSum = 0;
+
+      for (let i = 0; i < qArray.length; i++) {
+        qSum += qArray[i];
+      }
+
   // console.log("Sum of array elements:", subTotalofPQ);
 
   // checkout button handle
@@ -107,17 +121,19 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
                           (filteritem) => filteritem._id === mapitems.product_id
                         )
                         .map((map2item, i) => (
-                          <div
-                            key={i}
-                            className="flex overflow-hidden object-cover  h-24 w-20 md:h-48 md:w-44 rounded-lg"
-                          >
-                            <Image
-                              src={urlForImage(map2item.image[0]).url()}
-                              alt="productimage"
-                              width={300}
-                              height={300}
-                            />
-                          </div>
+                          <Link href={`/soloproducts/${map2item._id}`} passHref>
+                            <div
+                              key={i}
+                              className="flex overflow-hidden object-cover h-16 w-16 md:h-48 md:w-44 rounded-lg"
+                            >
+                              <Image
+                                src={urlForImage(map2item.image[0]).url()}
+                                alt="productimage"
+                                width={200}
+                                height={200}
+                              />
+                            </div>
+                          </Link>
                         ))}
                     </div>
                     <div className="md:ml-5 ml-0  rounded-lg w-full flex flex-col justify-between">
@@ -129,14 +145,19 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
                                 filteritem._id === mapitems.product_id
                             )
                             .map((mapitem, i) => (
-                              <div key={i} className="flex flex-col gap-y-2">
-                                <div className="text-lg font-extrabold">
-                                  {mapitem.title}
-                                </div>
-                                <div className="text-slate-400 text-sm font-bold">
+                              <div key={i} className="flex flex-col gap-y-1 py-1">
+                                <Link
+                                  href={`/soloproducts/${mapitem._id}`}
+                                  passHref
+                                >
+                                  <div className="text-md font-extrabold hover:italic">
+                                    {mapitem.title}
+                                  </div>
+                                </Link>
+                                <div className="text-slate-400 text-xs font-bold">
                                   {mapitem.generic.name}
                                 </div>
-                                <div className="text-lg font-bold">
+                                <div className="text-md font-bold">
                                   $ {mapitem.price * mapitems.quantity}
                                 </div>
                               </div>
@@ -149,16 +170,17 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
                           <TiTrash size={25} />
                         </div>
                       </div>
-                      <div>
+                      
+                      <div className="flex flex-col gap-y-1">
                         <div className="font-extrabold text-sm">
                           Delivery Estimation
                         </div>
                         <div className="text-pink-500 font-bold text-xs">
-                          5 Working Days
+                          5 - 10 Working Days
                         </div>
                       </div>
                       {/* price and quantity div */}
-                      <div className="flex justify-between">
+                      <div className="flex justify-between mt-2">
                         <div className="text-xs text-slate-500 flex items-center justify-center gap-x-6">
                           <div>Qty: {mapitems.quantity}</div>{" "}
                           <div> Size: {mapitems.size}</div>
@@ -179,15 +201,18 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
                 <div className="flex justify-between border-b">
                   <div>Items in Cart:</div>
                   <div className="text-red-600 font-bold">
-                    {res.filter((items) => items.user_id === cookiesuid).length}
+                    {qSum}
                   </div>
                 </div>
                 <div className="flex justify-between border-b">
                   <div>Sub Total:</div>
-                  <div className="text-red-600 font-bold">$ {subTotalofPQ}</div>
+                  <div className="text-red-600 font-bold animate-pulse">$ {subTotalofPQ}</div>
                 </div>
-                <div className="border bg-black text-white p-2 rounded-lg text-sm text-center">
-                  <button onClick={handleCheckout}>Proceed to Checkout</button>
+                <div
+                  className="border bg-black text-white p-2 rounded-lg text-sm text-center hover:scale-95 hover:ring-red-500 ring-1 cursor-pointer"
+                  onClick={handleCheckout}
+                >
+                  <button>Proceed to Checkout</button>
                 </div>
               </div>
             </div>

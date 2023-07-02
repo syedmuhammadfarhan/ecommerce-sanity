@@ -8,14 +8,14 @@ export default function Promotions() {
         <p className="text-blue-600 text-xs font-bold">PROMOTIONS</p>
         <h2 className="text-4xl font-bold py-6">Our Promotions Events</h2>
       </div>
-      <div className="md:flex justify-between">
-        <div className="basis-1/2 border border-red-400 p-2 md:p-6 space-y-6">
+      <div className="lg:flex justify-between">
+        <div className="basis-1/2  p-2 md:p-6 space-y-6">
           {/* card 1 */}
-          <div className="border w-full md:h-[11.8rem] bg-[#D6D6D8] md:flex md:justify-between items-center overflow-hidden relative">
-            <div className="text-[#212121] border md:max-w-fit md:flex justify-center flex-col items-center px-2">
-              <h2 className="text-3xl font-bold">GET UP TO </h2>
-              <h3 className="text-4xl font-extrabold">60%</h3>
-              <p className="text-lg">For the summer season</p>
+          <div className=" w-full md:h-[11.8rem] bg-[#D6D6D8] md:flex md:justify-between items-center overflow-hidden relative">
+            <div className="text-[#212121]  md:max-w-fit md:flex justify-center flex-col items-center px-2">
+              <h2 className="text-xl md:text-3xl font-bold">GET UP TO </h2>
+              <h3 className="text-2xl md:text-4xl font-extrabold">60%</h3>
+              <p className="text-sm md:text-lg">For the summer season</p>
             </div>
             <center>
               <Image
@@ -27,7 +27,7 @@ export default function Promotions() {
             </center>
           </div>
           {/* card  2*/}
-          <div className="border w-full h-[11.8rem] bg-[#212121] flex justify-center items-center">
+          <div className=" w-full h-[11.8rem] bg-[#212121] flex justify-center items-center">
             <div className="text-white flex flex-col justify-center items-center gap-y-2">
               <div>
                 <h2 className="flex text-3xl font-bold md:tracking-wider">
@@ -43,9 +43,9 @@ export default function Promotions() {
             </div>
           </div>
         </div>
-        <div className="border border-green-500 basis-1/2 flex flex-col md:flex-row justify-between gap-y-7 md:gap-x-7 md:p-6 p-2">
+        <div className="basis-1/2 flex flex-col md:flex-row justify-between gap-y-7 md:gap-x-7 md:p-6 p-2">
           {/* card 3 */}
-          <div className="border md:w-1/2 h-[25rem] bg-[#EFE1C7] flex flex-col justify-between">
+          <div className=" md:w-1/2 h-[25rem] bg-[#EFE1C7] flex flex-col justify-between">
             <div className="p-2 font-bold">
               <p>Flex Sweatshirt</p>
               <div className="flex gap-x-3">
@@ -53,12 +53,12 @@ export default function Promotions() {
                 <p>$75.00</p>
               </div>
             </div>
-            <center className="border">
+            <center className="">
               <Image src="/event2.png" alt="event2" width={250} height={250} />
             </center>
           </div>
           {/* card 4 */}
-          <div className="border md:w-1/2 h-[25rem] bg-[#D7D7D9] flex flex-col justify-between">
+          <div className=" md:w-1/2 h-[25rem] bg-[#D7D7D9] flex flex-col justify-between">
             <div className="p-2 font-bold">
               <p>Flex Push Button Bomber</p>
               <div className="flex gap-x-3">

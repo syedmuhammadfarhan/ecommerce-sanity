@@ -8,11 +8,11 @@ export default async function ProductScroll({ data }: { data: IProduct[] }) {
   return (
     <div>
       <div className="text-center mt-28">
-        <p className="text-blue-600 text-xs font-bold">PRODUCTS</p>
+        <p className="text-xs font-bold">PRODUCTS</p>
         <h2 className="text-4xl font-bold py-6">Check What We Have</h2>
       </div>
       <div className="flex">
-        <div className="border flex items-center max-w-[70rem] w-full h-[30rem] mx-auto mt-4 mb-8 overflow-x-hidden">
+        <div className=" flex items-center max-w-[70rem] w-full h-[30rem] mx-auto mt-4 mb-8 overflow-x-hidden">
           <div className="flex animate-marquee whitespace-nowrap hover:pause">
             {data.map((items, i) => (
               <Link key={i} href={`/soloproducts/${items._id}`} passHref>
