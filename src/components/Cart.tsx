@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { cartItems } from "@/drizzle/lib/drizzle";
+import { cartItems } from "@/lib/drizzle";
 import { TiTrash } from "react-icons/ti";
 import { useRouter } from "next/navigation";
 import QuantityButton from "../components/QuantityButton";
@@ -8,6 +8,7 @@ import { IProduct, getProductData } from "../components/cmsFetch";
 import { getData } from "./dbFetch";
 import { urlForImage } from "../../sanity/lib/image";
 import Image from "next/image";
+import getStripePromise from "@/lib/stripe";
 
 export default async function Cart({
   cookiesuid,
@@ -16,16 +17,34 @@ export default async function Cart({
 }) {
   const { refresh } = useRouter();
   const res: cartItems[] = await getData();
-  console.log(`this is cart db after GET query`, res);
-  // const idToCompare = res.map((items) => items.product_id);
-  // console.log(`idToCompare`, idToCompare);
+
   const data: IProduct[] = await getProductData();
-  // console.log(`this is cart cms`, data);
-  console.log(
-    `res filter cookiesuid`,
-    res.filter((items) => items.user_id === cookiesuid)
+
+  const resFilter = res.filter(
+    (items: cartItems) => items.user_id === cookiesuid
   );
 
+const newArray = resFilter.map((map1items)=> data
+                        .filter(
+                          (filteritem) => filteritem._id === map1items.product_id
+                        )
+  .map((map2item, i) => (map2item.title))).map((items)=> items[0])[0]
+  
+  console.log(
+    `newArray`,
+    resFilter
+      .map((map1items) =>
+        data
+          .filter((filteritem) => filteritem._id === map1items.product_id)
+          .map((map2item, i) => map2item.price)
+      )
+      .map((items) => items[0])[1]
+  );
+  
+
+  
+
+  // delete api
   const handleDelete = async (product_id: string) => {
     try {
       if (product_id) {
@@ -46,6 +65,7 @@ export default async function Cart({
       console.log("An error occurred during the delete request:", error);
     }
   };
+  // del api end
 
   let PQ = res
     .filter((items) => items.user_id === cookiesuid)
@@ -56,7 +76,7 @@ export default async function Cart({
     );
   // let PQ = res.filter((items) => items.user_id === cookiesuid);
 
-  console.log(`PQ`, PQ);
+  // console.log(`PQ`, PQ);
 
   let subTotalofPQ = 0;
 
@@ -64,10 +84,32 @@ export default async function Cart({
     subTotalofPQ += PQ[i][0];
   }
 
-  console.log("Sum of array elements:", subTotalofPQ);
+  // console.log("Sum of array elements:", subTotalofPQ);
+
+  // checkout button handle
+  const handleCheckout = async () => {
+    const stripe = await getStripePromise();
+    const response = await fetch("/api/stripe-session/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      cache: "no-cache",
+      body: JSON.stringify(res),
+    });
+
+    const data = await response.json();
+    if (data.session) {
+      stripe?.redirectToCheckout({ sessionId: data.session.id });
+    }
+  };
 
   return (
     <div>
+      {!res.filter((items) => items.user_id === cookiesuid) && (
+        <div className="text-3xl text-slate-400 font-bold text-center pt-10">
+          No Items Available
+        </div>
+      )}
+
       {res.filter((items) => items.user_id === cookiesuid).length ? (
         <>
           <div>
@@ -156,7 +198,7 @@ export default async function Cart({
             {/* order summary div */}
             <div className="bg-gray-300 rounded-lg md:mt-0 mt-3 flex md:justify-center mx-2">
               <div className="p-2 w-[100%] max-w-full md:w-64 h-48 flex flex-col justify-between">
-                <div >
+                <div>
                   <h2 className="md:text-xl font-bold">Order Summary</h2>
                 </div>
                 <div className="flex justify-between border-b">
@@ -170,7 +212,7 @@ export default async function Cart({
                   <div className="text-red-600 font-bold">$ {subTotalofPQ}</div>
                 </div>
                 <div className="border bg-black text-white p-2 rounded-lg text-sm text-center">
-                  <button>Proceed to Checkout</button>
+                  <button onClick={handleCheckout}>Proceed to Checkout</button>
                 </div>
               </div>
             </div>

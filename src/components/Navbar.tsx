@@ -5,7 +5,7 @@ import { navItems } from "../Data/Navbar-data";
 import Link from "next/link";
 import CartButton from "../components/CartButton";
 import { getData } from "../components/dbFetch";
-import { cartItems } from "../drizzle/lib/drizzle";
+import { cartItems } from "../lib/drizzle";
 import { cookies } from "next/headers";
 import Hamburger from "../components/Hamburger";
 

@@ -13,7 +13,7 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState("");
   const { refresh } = useRouter();
-  console.log(size);
+  // console.log(size);
   const handleMouseEnter = (i: number) => {
     setIndex(i);
   };
@@ -39,6 +39,9 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
           product_id: data[0]._id,
           size: size,
           quantity: quantity,
+          price: data[0].price,
+          title: data[0].title,
+          product_image: urlForImage(data[0].image[0]).url(),
         }),
       });
       refresh();
@@ -87,7 +90,9 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
           </div>
           {/* 3rd column of solo product page */}
           <div className="border border-red-400 mb-2 lg:mb-0 mt-2 lg:mt-0 p-2">
-            <div className="text-lg md:text-2xl font-extrabold mb-1">{data[0].title}</div>
+            <div className="text-lg md:text-2xl font-extrabold mb-1">
+              {data[0].title}
+            </div>
             <div className="md:text-lg text-slate-400 font-bold mb-6">
               {data[0].generic.name}
             </div>
@@ -128,10 +133,10 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
             </div>
             <div className="flex items-center gap-x-4">
               <button
-                className="flex flex-col md:flex-row justify-center items-center gap-y-2 md:gap-x-2 border rounded-lg bg-black px-4 py-2 text-white text-xs md:text-sm  hover:scale-95 hover:ring-red-500 ring-1"
+                className="flex justify-center items-center gap-y-2 md:gap-x-2 border rounded-lg bg-black px-4 py-2 text-white text-xs md:text-sm  hover:scale-95 hover:ring-red-500 ring-1"
                 onClick={handleAddToCart}
               >
-                <FiShoppingCart size={18}/>
+                <FiShoppingCart size={18} />
                 Add to Cart
               </button>
               <p className="text-2xl font-bold">$ {data[0].price}</p>

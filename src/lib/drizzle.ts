@@ -11,10 +11,13 @@ export const cartTable = pgTable("cart", {
   user_id: varchar("user_id", { length: 255 }).notNull(),
   product_id: varchar("product_id", { length: 255 }).notNull(),
   size: text("size").notNull(),
-  quantity: integer("quantity").notNull()
+  quantity: integer("quantity").notNull(),
+  price: integer("price").notNull(),
+  title: text("title").notNull(),
+  product_image: varchar("product_image", { length: 255 }).notNull(),
 });
 
 export type cartItems = InferModel<typeof cartTable>;
-export type cartItemsNew = InferModel<typeof cartTable, "insert">;
+// export type cartItemsNew = InferModel<typeof cartTable, "insert">;
 
 export const db = drizzle(sql);

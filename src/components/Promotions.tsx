@@ -5,7 +5,7 @@ export default function Promotions() {
   return (
     <>
       <div className="text-center mt-28">
-        <p className="text-blue-600 text-xs font-semibold">PROMOTIONS</p>
+        <p className="text-blue-600 text-xs font-bold">PROMOTIONS</p>
         <h2 className="text-4xl font-bold py-6">Our Promotions Events</h2>
       </div>
       <div className="md:flex justify-between">

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db, cartTable } from "../../../drizzle/lib/drizzle";
+import { db, cartTable } from "../../../lib/drizzle";
 import {v4} from "uuid"
 import { cookies } from "next/headers";
 import { eq } from "drizzle-orm";
@@ -35,6 +35,9 @@ export async function POST(request: NextRequest) {
         product_id: req.product_id,
         size: req.size,
         quantity: req.quantity,
+        price: req.price,
+        title: req.title,
+        product_image: req.product_image,
       })
       .returning();
     // return NextResponse.json({ message: "Data added successfully" });

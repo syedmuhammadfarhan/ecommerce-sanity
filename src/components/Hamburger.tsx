@@ -4,12 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { FiAlignRight, FiX, FiShoppingCart } from "react-icons/fi";
-import { cartItems } from "@/drizzle/lib/drizzle";
+import { cartItems } from "@/lib/drizzle";
 
-export default function Hamburger(
-  { res, cookiesuid }: { res: cartItems[]; cookiesuid: string | undefined },
-  
-) {
+export default function Hamburger({
+  res,
+  cookiesuid,
+}: {
+  res: cartItems[];
+  cookiesuid: string | undefined;
+}) {
   const [mobNav, setMobNav] = useState(false);
   console.log(`this is mobNav from hamburger page`, mobNav);
 
@@ -25,9 +28,17 @@ export default function Hamburger(
         <div className="fixed right-0 top-0 w-[100%] h-screen bg-white px-4 pt-6 ease-in duration-500">
           {/* dinemart logo and close icon */}
           <div className="flex justify-between pt-4">
-            <div>
-              <Image src="/Logo.png" alt="logo" width={140} height={40} />
-            </div>
+            <Link
+              href="/"
+              passHref
+              onClick={() => {
+                setMobNav(!mobNav);
+              }}
+            >
+              <div>
+                <Image src="/Logo.png" alt="logo" width={140} height={40} />
+              </div>
+            </Link>
             <div>
               <FiX
                 size={25}

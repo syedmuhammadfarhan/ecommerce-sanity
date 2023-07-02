@@ -1,4 +1,4 @@
-import { cartItems } from "@/drizzle/lib/drizzle";
+import { cartItems } from "@/lib/drizzle";
 import Link from "next/link";
 import React from "react";
 import { FiShoppingCart } from "react-icons/fi";
