@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <>
       <div className=" flex flex-1 justify-between gap-[2rem] pt-16">
-        <div className="flex flex-1 flex-col pl-1 py-10 space-y-10">
+        <div className="flex flex-1 flex-col px-2 py-10 space-y-10">
           <span className="bg-[#e1edff] font-[600] text-indigo-700 text-lg py-2 px-6 rounded-md max-w-fit">
             Sale 70%
           </span>
@@ -23,7 +23,7 @@ export default function Hero() {
           <Link href="products/Allproducts" passHref>
             <button
               type="button"
-              className="flex justify-between items-center gap-3 bg-black px-4 py-2 text-white text-center font-bold text-md"
+              className="flex justify-between items-center gap-3 bg-black px-4 py-2 text-white text-center font-bold text-md hover:scale-95 hover:ring-red-500 ring-1 cursor-pointer rounded-lg"
             >
               <FiShoppingCart size={20} color="white" />
               Start Shopping
