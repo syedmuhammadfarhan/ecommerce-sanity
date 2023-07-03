@@ -12,12 +12,6 @@ import Hamburger from "../components/Hamburger";
 export default async function Navbar() {
   const res: cartItems[] = await getData();
   const cookiesuid = cookies().get("user_id")?.value;
-  console.log(
-    `NavCart`,
-    res.filter((items) => items.user_id === cookiesuid).map((items)=> items.quantity)
-  );
-
-
 
   return (
     <>

@@ -3,13 +3,11 @@ import React from "react";
 import { cartItems } from "@/lib/drizzle";
 import { TiTrash } from "react-icons/ti";
 import { useRouter } from "next/navigation";
-import QuantityButton from "../components/QuantityButton";
-import { IProduct, getProductData } from "../components/cmsFetch";
 import { getData } from "./dbFetch";
-import { urlForImage } from "../../sanity/lib/image";
 import Image from "next/image";
 import getStripePromise from "@/lib/stripe";
 import Link from "next/link";
+import toast, { Toaster } from "react-hot-toast";
 
 type CookiesUid = {
   cookiesuid: string | undefined;
@@ -18,13 +16,16 @@ type CookiesUid = {
 export default async function Cart({ cookiesuid }: CookiesUid) {
   const { refresh } = useRouter();
   const res: cartItems[] = await getData();
-  const data: IProduct[] = await getProductData();
+
+    const handleToast = () => {
+      toast.error("Successfully Deleted!");
+    };
 
   // delete api handle
-  const handleDelete = async (product_id: string) => {
+  const handleDelete = async (id: number) => {
     try {
-      if (product_id) {
-        const response = await fetch(`/api/cart?product_id=${product_id}`, {
+      if (id) {
+        const response = await fetch(`/api/cart?id=${id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -43,37 +44,27 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
   };
   // del api end
 
+  // subtotal
   let PQ = res
     .filter((items) => items.user_id === cookiesuid)
-    .map((mapitems) =>
-      data
-        .filter((filteritems) => filteritems._id === mapitems.product_id)
-        .map((filtermapitems) => filtermapitems.price * mapitems.quantity)
-    );
-  // let PQ = res.filter((items) => items.user_id === cookiesuid);
-
-  // console.log(`PQ`, PQ);
+    .map((items) => items.price * items.quantity);
 
   let subTotalofPQ = 0;
 
   for (let i = 0; i < PQ.length; i++) {
-    subTotalofPQ += PQ[i][0];
+    subTotalofPQ += PQ[i];
   }
 
-
   // items in cart
+  let qArray = res
+    .filter((items) => items.user_id === cookiesuid)
+    .map((items) => items.quantity);
 
-      let qArray = res
-        .filter((items) => items.user_id === cookiesuid)
-        .map((items) => items.quantity);
+  let qSum = 0;
 
-      let qSum = 0;
-
-      for (let i = 0; i < qArray.length; i++) {
-        qSum += qArray[i];
-      }
-
-  // console.log("Sum of array elements:", subTotalofPQ);
+  for (let i = 0; i < qArray.length; i++) {
+    qSum += qArray[i];
+  }
 
   // checkout button handle
   const handleCheckout = async () => {
@@ -93,16 +84,18 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
 
   return (
     <div>
-      {!res.filter((items) => items.user_id === cookiesuid) && (
+      {!res.filter((items) => items.user_id === cookiesuid).length && (
         <div className="text-3xl text-slate-400 font-bold text-center pt-10">
           No Items Available
         </div>
       )}
 
-      {res.filter((items) => items.user_id === cookiesuid).length ? (
+      {res.filter((items) => items.user_id === cookiesuid).length > 0 && (
         <>
           <div>
-            <h1 className="text-xl font-extrabold mt-12 mb-6">Shopping Cart</h1>
+            <h1 className="text-xl font-extrabold mt-12 mb-6 mx-2">
+              Shopping Cart
+            </h1>
           </div>
           <div className="md:flex flex-between">
             {/* product details */}
@@ -113,63 +106,47 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
                 .map((mapitems, i) => (
                   <div
                     key={i}
-                    className="flex flex-col md:flex-row border border-slate-200 rounded-lg p-2"
+                    className="flex flex-col md:flex-row border border-slate-200 rounded-lg p-1 mx-2"
                   >
                     <div>
-                      {data
-                        .filter(
-                          (filteritem) => filteritem._id === mapitems.product_id
-                        )
-                        .map((map2item, i) => (
-                          <Link
-                            key={i}
-                            href={`/soloproducts/${map2item._id}`}
-                            passHref
-                          >
-                            <div className="flex overflow-hidden object-cover h-16 w-16 md:h-48 md:w-44 rounded-lg">
-                              <Image
-                                src={urlForImage(map2item.image[0]).url()}
-                                alt="productimage"
-                                width={200}
-                                height={200}
-                              />
-                            </div>
-                          </Link>
-                        ))}
+                      <Link
+                        key={i}
+                        href={`/soloproducts/${mapitems.product_id}`}
+                        passHref
+                      >
+                        <div className="flex overflow-hidden object-cover h-16 w-16 md:h-48 md:w-44 rounded-lg">
+                          <Image
+                            src={mapitems.product_image}
+                            alt="productimage"
+                            width={200}
+                            height={200}
+                          />
+                        </div>
+                      </Link>
                     </div>
                     <div className="md:ml-5 ml-0  rounded-lg w-full flex flex-col justify-between">
                       <div className="flex justify-between">
                         <div>
-                          {data
-                            .filter(
-                              (filteritem) =>
-                                filteritem._id === mapitems.product_id
-                            )
-                            .map((mapitem, i) => (
-                              <div
-                                key={i}
-                                className="flex flex-col gap-y-1 py-1"
-                              >
-                                <Link
-                                  href={`/soloproducts/${mapitem._id}`}
-                                  passHref
-                                >
-                                  <div className="text-md font-extrabold hover:italic">
-                                    {mapitem.title}
-                                  </div>
-                                </Link>
-                                <div className="text-slate-400 text-xs font-bold">
-                                  {mapitem.generic.name}
-                                </div>
-                                <div className="text-md font-bold">
-                                  $ {mapitem.price * mapitems.quantity}
-                                </div>
+                          <div key={i} className="flex flex-col gap-y-1 py-1">
+                            <Link
+                              href={`/soloproducts/${mapitems.product_id}`}
+                              passHref
+                            >
+                              <div className="test-sm md:text-md font-extrabold hover:italic">
+                                {mapitems.title}
                               </div>
-                            ))}
+                            </Link>
+                            <div className="text-slate-400 text-xs font-bold">
+                              {mapitems.generic_name}
+                            </div>
+                            <div className="test-sm md:text-md font-bold">
+                              $ {mapitems.price * mapitems.quantity}
+                            </div>
+                          </div>
                         </div>
                         <div
                           className="hover:scale-105 cursor-pointer"
-                          onClick={() => handleDelete(mapitems.product_id)}
+                          onClick={() => {handleDelete(mapitems.id), handleToast();}}
                         >
                           <TiTrash size={25} />
                         </div>
@@ -189,7 +166,6 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
                           <div>Qty: {mapitems.quantity}</div>{" "}
                           <div> Size: {mapitems.size}</div>
                         </div>
-                        {/* <QuantityButton /> */}
                       </div>
                       {/* price and quantity div ends */}
                     </div>
@@ -203,14 +179,14 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
                   <h2 className="md:text-xl font-bold">Order Summary</h2>
                 </div>
                 <div className="flex justify-between border-b">
-                  <div>Items in Cart:</div>
-                  <div className="text-red-600 font-bold">{qSum}</div>
+                  <p className="test-sm md:text-md">Items in Cart:</p>
+                  <p className="text-red-600 font-bold">{qSum}</p>
                 </div>
-                <div className="flex justify-between border-b">
-                  <div>Sub Total:</div>
-                  <div className="text-red-600 font-bold animate-pulse">
+                <div className="test-sm md:text-md flex justify-between border-b">
+                  <p className="test-sm md:text-md">Sub Total:</p>
+                  <p className="text-red-600 font-bold animate-pulse">
                     $ {subTotalofPQ}
-                  </div>
+                  </p>
                 </div>
                 <div
                   className="border bg-black text-white p-2 rounded-lg text-sm text-center hover:scale-95 hover:ring-red-500 ring-1 cursor-pointer"
@@ -222,11 +198,8 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
             </div>
           </div>
         </>
-      ) : (
-        <div className="text-3xl text-slate-400 font-bold text-center pt-10">
-          No Items Available
-        </div>
       )}
+      <Toaster/>
     </div>
   );
 }

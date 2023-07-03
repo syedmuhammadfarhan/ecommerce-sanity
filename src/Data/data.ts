@@ -1,17 +1,17 @@
 export const sizeChart = [
     {
-        name:"XS"
+        size:"XS"
     },
     {
-        name:"S"
+        size:"S"
     },
     {
-        name:"MD"
+        size:"MD"
     },
     {
-        name:"L"
+        size:"L"
     },
     {
-        name:"XL"
+        size:"XL"
     },
 ]

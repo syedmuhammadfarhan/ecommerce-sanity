@@ -7,19 +7,20 @@ import { FiShoppingCart } from "react-icons/fi";
 import { sizeChart } from "@/Data/data";
 import { useRouter } from "next/navigation";
 import { IProduct } from "./cmsFetch";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function SoloImage({ data }: { data: IProduct[] }) {
   const [index, setIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState("");
   const { refresh } = useRouter();
-  
+
   const handleMouseEnter = (i: number) => {
     setIndex(i);
   };
 
-  const handleSize = (name: string) => {
-    setSize(name);
+  const handleSize = (size: string) => {
+    setSize(size);
   };
 
   const quantityIncrement = () => {
@@ -29,6 +30,10 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
+  };
+
+  const handleToast = () => {
+    toast.success("Successfully Added!");    
   };
 
   const handleAddToCart = async () => {
@@ -42,9 +47,14 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
           price: data[0].price,
           title: data[0].title,
           product_image: urlForImage(data[0].image[0]).url(),
+          generic_name: data[0].generic.name,
         }),
       });
-      refresh();
+      if (res.ok) {
+        refresh();
+      } else {
+        console.log("POST request failed with status:", res.status);
+      }
     } catch (error) {
       console.log("error");
     }
@@ -103,9 +113,9 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
                   <div
                     key={i}
                     className="border rounded-full w-7 h-7 text-slate-500 font-semibold flex items-center justify-center hover:bg-black hover:text-white cursor-pointer text-xs"
-                    onClick={() => handleSize(items.name)}
+                    onClick={() => handleSize(items.size)}
                   >
-                    <p>{items.name}</p>
+                    <p>{items.size}</p>
                   </div>
                 ))}
               </div>
@@ -132,13 +142,15 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
               </div>
             </div>
             <div className="flex justify-between items-center">
-              <div
-                className="flex justify-center items-center gap-x-3 border rounded-lg bg-black px-3 py-2 text-white text-xs md:text-sm  hover:scale-95 hover:ring-red-500 ring-1"
-                onClick={handleAddToCart}
+              <button
+                className="flex justify-center items-center gap-x-3 border rounded-lg bg-black px-3 py-2 text-white text-xs md:text-sm  hover:scale-95 hover:ring-red-500 ring-1 cursor-pointer"
+                onClick={() => { handleAddToCart();handleToast();}
+                   
+                }
               >
                 <FiShoppingCart size={18} />
                 Add to Cart
-              </div>
+              </button>
               <div>
                 <p className="text-xl font-bold">$ {data[0].price}</p>
               </div>
@@ -146,6 +158,7 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
           </div>
         </div>
       }
+      <Toaster/>
     </div>
   );
 }

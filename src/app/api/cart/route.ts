@@ -5,7 +5,6 @@ import { cookies } from "next/headers";
 import { eq } from "drizzle-orm";
 
 export async function GET(request: NextRequest) {
-  // console.log(`from GET API route.ts`,cookies().get("user_id")?.value)
   try {
     // await sql`CREATE TABLE IF NOT EXISTS Todos(id serial primary key, Task varchar(255))`;
 
@@ -22,7 +21,6 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   const req = await request.json();
-  // console.log(`this is POST req`,req)
   const uid = v4();
   if (!cookies().get("user_id")) {
     cookies().set("user_id", uid)
@@ -39,6 +37,7 @@ export async function POST(request: NextRequest) {
         price: req.price,
         title: req.title,
         product_image: req.product_image,
+        generic_name: req.generic_name
       })
       .returning();
     // return NextResponse.json({ message: "Data added successfully" });
@@ -56,10 +55,10 @@ export async function DELETE(req: NextRequest) {
     let url = req.nextUrl.searchParams;
 
     try {
-        if (url.has("product_id")) {
+        if (url.has("id")) {
             let response = await db.delete(cartTable).
                 where(
-                    eq(cartTable.product_id, (url.get("product_id") as string))
+                    eq(cartTable.id, (url.get("id") as unknown as number))
                     // and(eq(cartTable.product_id, (url.get("product_id") as string)), eq(cartTable.user_id, (url.get("user_id") as string)))
                 ).returning()
             return NextResponse.json({ response });

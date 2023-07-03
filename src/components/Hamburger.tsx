@@ -16,15 +16,16 @@ export default function Hamburger({
 }) {
   const [mobNav, setMobNav] = useState(false);
 
-    let qArray = res
-      .filter((items) => items.user_id === cookiesuid)
-      .map((items) => items.quantity);
+  let qArray = res
+    .filter((items) => items.user_id === cookiesuid)
+    .map((items) => items.quantity);
 
-    let qSum = 0;
+  let qSum = 0;
 
-    for (let i = 0; i < qArray.length; i++) {
-      qSum += qArray[i];
-    }
+  for (let i = 0; i < qArray.length; i++) {
+    qSum += qArray[i];
+  }
+
   return (
     <div>
       <div onClick={() => setMobNav(!mobNav)} className="lg:hidden">
@@ -32,9 +33,9 @@ export default function Hamburger({
       </div>
       {mobNav && (
         // <div className="fixed md:hidden left-0 top-0 w-full h-screen bg-black/70">
-        <div className="fixed right-0 top-0 w-[100%] h-screen bg-white px-4 pt-6 ease-in duration-500">
+        <div className="fixed right-0 top-0 w-full h-screen bg-white px-2 pt-5 ease-in-out duration-500">
           {/* dinemart logo and close icon */}
-          <div className="flex justify-between pt-4">
+          <div className=" border flex justify-between">
             <Link
               href="/"
               passHref
@@ -42,7 +43,7 @@ export default function Hamburger({
                 setMobNav(!mobNav);
               }}
             >
-              <div>
+              <div className="cursor-pointer">
                 <Image src="/Logo.png" alt="logo" width={140} height={40} />
               </div>
             </Link>
@@ -60,7 +61,7 @@ export default function Hamburger({
           <div className="leading-10 pt-10 text-md flex flex-col justify-center items-center text-center">
             {/* cart button */}
             <Link
-              href="/cart/cartitems"
+              href="/cart/"
               passHref
               onClick={() => {
                 setMobNav(!mobNav);

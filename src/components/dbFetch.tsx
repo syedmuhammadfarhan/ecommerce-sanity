@@ -3,7 +3,6 @@ const BASE_URL =
     ? "http://localhost:3000"
     : "https://ecommerce-sanity-sage.vercel.app";
 
-// : "https://todo-postgres-blue.vercel.app";
 
 export async function getData() {
   try {
