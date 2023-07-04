@@ -4,6 +4,7 @@ import Products from "@/components/ProductScroll";
 import Promotions from "@/components/Promotions";
 import { IProduct, getProductData } from "../components/cmsFetch";
 import FeaturesBanner from "@/components/FeatureBanner";
+import Link from "next/link";
 
 
 export default async function Home() {
@@ -16,7 +17,7 @@ export default async function Home() {
       <Products data={data} />
       <FeaturesBanner/>
       <Newsletter />
-     
+     <Link href="success">SUCCESS</Link>
     </div>
   );
 }

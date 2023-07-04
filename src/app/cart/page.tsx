@@ -7,7 +7,7 @@ export default function page() {
 
   return (
   
-        <div className="h-screen">
+        <div className="h-auto">
           <Cart cookiesuid={cookiesuid} />
         </div>
   

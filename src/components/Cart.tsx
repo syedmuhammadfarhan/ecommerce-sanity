@@ -93,7 +93,7 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
       {res.filter((items) => items.user_id === cookiesuid).length > 0 && (
         <>
           <div>
-            <h1 className="text-xl font-extrabold mt-12 mb-6 mx-2">
+            <h1 className="text-xl font-extrabold mt-12 mb-6 mx-2 p-2">
               Shopping Cart
             </h1>
           </div>

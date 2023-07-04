@@ -16,7 +16,7 @@ export default async function ProductScroll({ data }: { data: IProduct[] }) {
           <div className="flex animate-marquee whitespace-nowrap hover:pause">
             {data.map((items, i) => (
               <Link key={i} href={`/soloproducts/${items._id}`} passHref>
-                <div className="mx-6 h-[25rem] w-[20rem] hover:scale-110 transition-transform ease-in-out duration-500 rounded-lg overflow-hidden flex flex-col justify-between">
+                <div className="mx-6 h-[25rem] w-[20rem] scale-90 lg:scale-100 hover:scale-110 transition-transform ease-in-out duration-500 rounded-lg overflow-hidden flex flex-col justify-between">
                   <div className="w-full h-6/7 rounded-lg overflow-hidden">
                     <Image
                       src={urlForImage(items.image[0]).url()}

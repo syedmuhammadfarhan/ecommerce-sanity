@@ -10,7 +10,7 @@ export default function Hero() {
     <>
       <div className=" flex flex-1 justify-between gap-[2rem] pt-16">
         <div className="flex flex-1 flex-col px-2 py-10 space-y-10">
-          <span className="bg-[#e1edff] font-[600] text-indigo-700 text-lg py-2 px-6 rounded-md max-w-fit">
+          <span className="bg-[#e1edff] font-[600] text-indigo-700 text-sm lg:text-lg py-2 px-6 rounded-md max-w-fit">
             Sale 70%
           </span>
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold">

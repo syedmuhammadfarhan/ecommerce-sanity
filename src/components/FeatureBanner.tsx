@@ -6,8 +6,8 @@ import Link from "next/link";
 const FeaturesBanner = () => {
   return (
     <section className=" mt-4 p-2">
-      <div className="flex justify-start lg:justify-end">
-        <h1 className="text-3xl lg:text-4xl font-extrabold  p-2">
+      <div className="flex justify-start lg:justify-end pl-4 lg:pl-0">
+        <h1 className="text-3xl lg:text-4xl font-extrabold w-2/6">
           Unique and Authentic Vintage Designer Jewellery
         </h1>
       </div>

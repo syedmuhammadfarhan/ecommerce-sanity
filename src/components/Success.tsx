@@ -9,7 +9,8 @@ const Success = ({ cookiesuid }: { cookiesuid: CookiesUid }) => {
   const { refresh } = useRouter();
 
   useEffect(() => {
-  const handleDelete = async () => {
+    // self invoking function
+  (async function(){
     try {
       if (cookiesuid) {
         const response = await fetch(`/api/success?user_id=${cookiesuid}`, {
@@ -28,8 +29,8 @@ const Success = ({ cookiesuid }: { cookiesuid: CookiesUid }) => {
     } catch (error) {
       console.log("An error occurred during the delete request:", error);
     }
-  };
-    handleDelete()
+  }());
+    
   },);
 
     return (

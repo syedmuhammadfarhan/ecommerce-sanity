@@ -13,7 +13,7 @@ export default async function page({
   // console.log(data);
 
   return (
-    <div className="h-auto lg:h-screen">
+    <div className="h-auto">
       {params.category !== "Allproducts" &&
         (data.filter((items) => items.category.name === params.category)
           .length ? (
