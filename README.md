@@ -3,6 +3,7 @@
 This is a Full satck Ecommerce website built built for the learning purpose ofthe state of the art Technologies.
 
 ## Stacks
+JavaScript HTML5 CSS3 React Next
 
 - NEXT.js 13
 - Tailwind CSS
