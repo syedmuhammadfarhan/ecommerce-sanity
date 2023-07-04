@@ -14,7 +14,7 @@ const FeaturesBanner = () => {
 
       <div className=" flex flex-col lg:flex-row justify-between">
         <div className=" basis-1/2  flex flex-col justify-evenly p-2 relative">
-          <div className=" absolute text-[5rem] text-[#f2f3f7] font-extrabold px-10 -z-10">
+          <div className=" absolute text-[3rem] lg:text-[5rem] text-[#f2f3f7] font-extrabold lg:px-10 px-2 -z-10 flex">
             Different from others
           </div>
           <div className="flex  gap-4">
@@ -48,7 +48,7 @@ const FeaturesBanner = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row basis-1/2 ">
-          <div className=" rounded-lg p-2">
+          <div className=" rounded-lg p-2 flex sm:justify-center">
             <Image
               src={img}
               width={300}
@@ -57,7 +57,7 @@ const FeaturesBanner = () => {
               className="rounded-lg"
             />
           </div>
-          <div className=" basis-2/3  text-slate-500 text-justify p-2 flex flex-col items-center justify-center gap-y-6">
+          <div className=" basis-2/3  text-slate-500 text-sm lg:text-md text-justify p-2 flex flex-col items-center justify-center gap-y-6">
             <p>
               This piece is ethically crafted in our small family-owned workshop
               in Peru with unmatched attention to detail and care. The Natural
@@ -66,7 +66,7 @@ const FeaturesBanner = () => {
             </p>
             <Link href={"products/Allproducts"}>
               <button
-                className="bg-black px-8 py-1 rounded-lg text-white hover:scale-95 hover:ring-red-500 ring-1 cursor-pointer select-none"
+                className="bg-black px-8 py-1 rounded-lg text-white text-sm lg:text-md hover:scale-95 hover:ring-red-500 ring-1 cursor-pointer select-none"
                 type="button"
               >
                 See All Product
