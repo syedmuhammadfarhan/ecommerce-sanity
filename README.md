@@ -20,7 +20,7 @@ Website is deployed in vercel.
 
 ### Screenshot
 
-![Screenshot of homepage of Dine Market e-commerce](/Screenshot.png)
+![Screenshot of homepage of Dine Market e-commerce](/public/Screenshot.png)
 Search bar is for the styling purpose only
 
 
