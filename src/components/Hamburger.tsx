@@ -32,9 +32,9 @@ export default function Hamburger({
         <FiAlignRight size="25" className="cursor-pointer  my-1.5" />
       </div>
       {mobNav && (
-        <div className="fixed right-0 top-0 w-full h-screen bg-white px-2 pt-5 ease-in-out duration-500">
+        <div className="fixed right-0 top-0 w-full h-screen bg-white px-2 pt-5 ease-in-out duration-500 transition-opacity">
           {/* dinemart logo and close icon */}
-          <div className=" border flex justify-between">
+          <div className="flex justify-between">
             <Link
               href="/"
               passHref

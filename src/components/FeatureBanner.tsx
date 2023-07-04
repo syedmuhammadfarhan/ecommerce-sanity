@@ -48,7 +48,7 @@ const FeaturesBanner = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row basis-1/2 ">
-          <div className=" rounded-lg p-2 flex sm:justify-center">
+          <div className=" rounded-lg p-2 flex justify-center">
             <Image
               src={img}
               width={300}
