@@ -66,7 +66,7 @@ const FeaturesBanner = () => {
             </p>
             <Link href={"products/Allproducts"}>
               <button
-                className="bg-black px-8 py-1 rounded-lg text-white text-sm lg:text-md hover:scale-95 hover:ring-red-500 ring-1 cursor-pointer select-none"
+                className="bg-black px-8 py-2 rounded-lg text-white text-sm lg:text-md hover:scale-95 hover:ring-red-500 ring-1 cursor-pointer select-none"
                 type="button"
               >
                 See All Product
