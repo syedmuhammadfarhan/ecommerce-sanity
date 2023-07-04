@@ -143,7 +143,7 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
             </div>
             <div className="flex justify-between items-center">
               <button
-                className="flex justify-center items-center gap-x-3 border rounded-lg bg-black px-3 py-2 text-white text-xs md:text-sm  hover:scale-95 hover:ring-red-500 ring-1 cursor-pointer"
+                className="flex justify-center items-center gap-x-3 border rounded-lg bg-black px-3 py-2 text-white text-xs md:text-sm  hover:scale-95 hover:ring-red-500 ring-1 cursor-pointer select-none"
                 onClick={() => { handleAddToCart();handleToast();}
                    
                 }

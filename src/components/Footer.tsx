@@ -27,8 +27,8 @@ const Footer = () => {
         </div>
 
         <div className="  basis-1/4 p-2 flex flex-col gap-4">
-          <h3 className="text-xl font-extrabold">Company</h3>
-          <ul className="text-slate-500 flex flex-col gap-2">
+          <h3 className="text-lg lg:text-xl font-extrabold">Company</h3>
+          <ul className="text-slate-500 flex flex-col gap-2 text-sm lg:text-md">
             <li>About</li>
             <li>Terms of Use</li>
             <li>Privacy Policy</li>
@@ -38,8 +38,8 @@ const Footer = () => {
         </div>
 
         <div className="  basis-1/4 p-2 flex flex-col gap-4">
-          <h3 className="text-xl font-extrabold">Support</h3>
-          <ul className="text-slate-500 flex flex-col gap-2">
+          <h3 className="text-lg lg:text-xl font-extrabold">Support</h3>
+          <ul className="text-slate-500 flex flex-col gap-2 text-sm lg:text-md">
             <li>Support Carrer</li>
             <li>24h Service</li>
             <li>Quick Chat</li>
@@ -47,15 +47,15 @@ const Footer = () => {
         </div>
 
         <div className=" basis-1/4 p-2 flex flex-col gap-4">
-          <h3 className="text-xl font-extrabold">Contact</h3>
-          <ul className="text-slate-500 flex flex-col gap-2">
+          <h3 className="text-lg lg:text-xl font-extrabold">Contact</h3>
+          <ul className="text-slate-500 flex flex-col gap-2 text-sm lg:text-md">
             <li>Whatsapp</li>
             <li>Support 24h</li>
           </ul>
         </div>
       </div>
 
-      <div className="border-t-2 border-black flex flex-col h-52 lg:h-20 lg:flex-row  justify-between py-6 mt-6 px-2 text-md md:text-lg font-bold">
+      <div className="border-t-2 border-black flex flex-col h-52 lg:h-20 lg:flex-row  justify-between py-6 mt-6 px-2 text-sm md:text-lg font-bold">
         <p>Copyright © 2023 Dine Market</p>
         <p>
           <span className="text-slate-500">Design by</span>{" "}

@@ -8,7 +8,7 @@ export default async function ProductScroll({ data }: { data: IProduct[] }) {
   return (
     <div>
       <div className="text-center mt-28">
-        <p className="text-xs font-bold">PRODUCTS</p>
+        <p className="text-blue-600 text-xs font-bold">PRODUCTS</p>
         <h2 className="text-4xl font-bold py-6">Check What We Have</h2>
       </div>
       <div className="flex">

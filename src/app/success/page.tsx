@@ -1,33 +1,14 @@
-// import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { BsBagCheckFill } from "react-icons/bs";
+import Success from "../../components/Success";
+import { cookies } from "next/headers";
 
-
-const successPay = () => {
-
-  // useEffect(() => {
-
-      
-  // }, []);
+const Page = () => {
+  const cookiesuid = cookies().get("user_id")?.value;
 
   return (
-    <div className="success">
-      <p className="icon">
-        <BsBagCheckFill size={80} />
-      </p>
-      <h1>Thank you for your order!</h1>
-      <p>Check your email inbox for the receipt</p>
-      <p className="description">
-        If you have any questions, please email
-        <a href="mailto:dinemarket@example.com">dinemarket@example.com</a>
-      </p>
-      <Link href="/">
-        <button className="btn" type="button">
-          Continue Shopping
-        </button>
-      </Link>
+    <div>
+      <Success cookiesuid={cookiesuid} />
     </div>
   );
 };
 
-export default successPay;
+export default Page;
