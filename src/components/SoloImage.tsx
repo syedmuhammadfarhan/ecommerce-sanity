@@ -15,13 +15,20 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
   const [size, setSize] = useState("");
   const { refresh } = useRouter();
 
+  
+
   const handleMouseEnter = (i: number) => {
     setIndex(i);
   };
 
+  const setBg = (items_size: string) =>
+    size === items_size ? "bg-black text-white" : "bg-white text-black";
+  
   const handleSize = (size: string) => {
     setSize(size);
   };
+
+
 
   const quantityIncrement = () => {
     setQuantity(quantity + 1);
@@ -112,7 +119,9 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
                 {sizeChart.map((items, i) => (
                   <div
                     key={i}
-                    className="border rounded-full w-7 h-7 text-slate-500 font-semibold flex items-center justify-center hover:bg-black hover:text-white cursor-pointer text-xs"
+                    className={`border rounded-full w-7 h-7  font-semibold flex items-center justify-center hover:bg-yellow-400  hover:ring-black hover:ring-1 text-black cursor-pointer text-xs ${setBg(
+                      items.size
+                    )}`}
                     onClick={() => handleSize(items.size)}
                   >
                     <p>{items.size}</p>
@@ -125,28 +134,29 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
               <div className="text-sm font-bold">Quantity:</div>
               <div className="flex">
                 <span
-                  className="border px-2 flex items-center hover:bg-black hover:text-white cursor-pointer"
+                  className="border border-slate-400 rounded-s-lg px-2 flex items-center hover:bg-black hover:text-white font-extrabold cursor-pointer select-none hover:scale-90"
                   onClick={quantityDecrement}
                 >
-                  <AiOutlineMinus />
+                  <AiOutlineMinus size={20} color="red"/>
                 </span>
-                <span className="border px-4 flex items-center">
+                <span className="border border-black px-4 flex items-center font-bold select-none text-white bg-black ">
                   {quantity}
                 </span>
                 <span
-                  className="border px-2 flex items-center hover:bg-black hover:text-white cursor-pointer"
+                  className="border border-slate-400 rounded-e-lg px-2 flex items-center hover:bg-black hover:text-white font-bold cursor-pointer select-none hover:scale-90"
                   onClick={quantityIncrement}
                 >
-                  <AiOutlinePlus />
+                  <AiOutlinePlus size={20} color="green"/>
                 </span>
               </div>
             </div>
             <div className="flex justify-between items-center">
               <button
                 className="flex justify-center items-center gap-x-3 border rounded-lg bg-black px-3 py-2 text-white text-xs md:text-sm  hover:scale-95 hover:ring-red-500 ring-1 cursor-pointer select-none"
-                onClick={() => { handleAddToCart();handleToast();}
-                   
-                }
+                onClick={() => {
+                  handleAddToCart();
+                  handleToast();
+                }}
               >
                 <FiShoppingCart size={18} />
                 Add to Cart
@@ -158,7 +168,7 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
           </div>
         </div>
       }
-      <Toaster/>
+      <Toaster />
     </div>
   );
 }
