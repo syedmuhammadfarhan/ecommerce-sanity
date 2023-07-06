@@ -15,7 +15,7 @@ This is a Full satck Ecommerce website built built for the learning purpose ofth
 
 
 
-### Links
+### Link
 
 Website is deployed in vercel.
 - [Live URL](https://ecommerce-sanity-sage.vercel.app/)
