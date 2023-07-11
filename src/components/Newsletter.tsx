@@ -8,7 +8,7 @@ const Newsletter = () => {
 
   return (
     <div className=" pt-[10rem] pb-2 flex flex-col justify-center items-center relative z-10 px-2 gap-1 mb-28">
-      <div className="text-[#f2f3f7] text-[2.6rem] sm:text-8xl md:text-9xl font-bold absolute top-[16rem] sm:top-[11rem] lg:top-[10rem] -z-10 p-1">
+      <div className="text-[#f2f3f7] text-[3.3rem] sm:text-8xl md:text-9xl font-bold absolute top-[13rem] sm:top-[11rem] lg:top-[10rem] -z-10 p-1">
         Newsletter
       </div>
       <center className="flex flex-col justify-center items-center">

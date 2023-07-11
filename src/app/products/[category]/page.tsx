@@ -74,7 +74,7 @@ export default async function page({
                 <div className="text-slate-400 font-bold">
                   {items.generic.name}
                 </div>
-                <div className="font-bold">{items.price}</div>
+                <div className="font-bold">$ {items.price}</div>
               </div>
             </Link>
           ))}

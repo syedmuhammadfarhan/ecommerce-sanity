@@ -17,9 +17,9 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
   const { refresh } = useRouter();
   const res: cartItems[] = await getData();
 
-    const handleToast = () => {
-      toast.error("Successfully Deleted!");
-    };
+  const handleToast = () => {
+    toast.error("Successfully Deleted!");
+  };
 
   // delete api handle
   const handleDelete = async (id: number) => {
@@ -85,7 +85,7 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
   return (
     <div>
       {!res.filter((items) => items.user_id === cookiesuid).length && (
-        <div className="text-3xl text-slate-400 font-bold text-center pt-10">
+        <div className="text-3xl text-slate-400 font-bold text-center pt-10 h-auto">
           No Items Available
         </div>
       )}
@@ -146,7 +146,9 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
                         </div>
                         <div
                           className="hover:scale-105 cursor-pointer"
-                          onClick={() => {handleDelete(mapitems.id), handleToast();}}
+                          onClick={() => {
+                            handleDelete(mapitems.id), handleToast();
+                          }}
                         >
                           <TiTrash size={25} />
                         </div>
@@ -173,33 +175,35 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
                 ))}
             </div>
             {/* order summary div */}
-            <div className="bg-gray-300 rounded-lg md:mt-0 mt-3 flex md:justify-center mx-2">
-              <div className="p-2 w-[100%] max-w-full md:w-64 h-48 flex flex-col justify-between">
-                <div>
-                  <h2 className="md:text-xl font-bold">Order Summary</h2>
-                </div>
-                <div className="flex justify-between border-b">
-                  <p className="test-sm md:text-md">Items in Cart:</p>
-                  <p className="text-red-600 font-bold">{qSum}</p>
-                </div>
-                <div className="test-sm md:text-md flex justify-between border-b">
-                  <p className="test-sm md:text-md">Sub Total:</p>
-                  <p className="text-red-600 font-bold animate-pulse">
-                    $ {subTotalofPQ}
-                  </p>
-                </div>
-                <div
-                  className="border bg-black text-white p-2 rounded-lg text-sm text-center hover:scale-95 hover:ring-red-500 ring-1 cursor-pointer"
-                  onClick={handleCheckout}
-                >
-                  <button>Proceed to Checkout</button>
+            <div className="flex items-end h-auto">
+              <div className="bg-gray-300 rounded-lg md:mt-0 mt-3 flex md:justify-center mx-2 h-fit ">
+                <div className="p-2 w-[100%] max-w-full md:w-64 h-48 flex flex-col justify-between">
+                  <div>
+                    <h2 className="md:text-xl font-bold">Order Summary</h2>
+                  </div>
+                  <div className="flex justify-between border-b">
+                    <p className="test-sm md:text-md">Items in Cart:</p>
+                    <p className="text-red-600 font-bold">{qSum}</p>
+                  </div>
+                  <div className="test-sm md:text-md flex justify-between border-b">
+                    <p className="test-sm md:text-md">Sub Total:</p>
+                    <p className="text-red-600 font-bold animate-pulse">
+                      $ {subTotalofPQ}
+                    </p>
+                  </div>
+                  <div
+                    className="border bg-black text-white p-2 rounded-lg text-sm text-center hover:scale-95 hover:ring-red-500 ring-1 cursor-pointer"
+                    onClick={handleCheckout}
+                  >
+                    <button>Proceed to Checkout</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </>
       )}
-      <Toaster/>
+      <Toaster />
     </div>
   );
 }
