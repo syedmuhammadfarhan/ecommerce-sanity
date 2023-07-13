@@ -175,8 +175,8 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
                 ))}
             </div>
             {/* order summary div */}
-            <div className="flex items-end h-auto">
-              <div className="bg-gray-300 rounded-lg md:mt-0 mt-3 flex md:justify-center mx-2 h-fit ">
+            <div className="flex md:items-end">
+              <div className="bg-gray-300 rounded-lg md:mt-0 mt-3 flex md:justify-center mx-2 h-fit w-full">
                 <div className="p-2 w-[100%] max-w-full md:w-64 h-48 flex flex-col justify-between">
                   <div>
                     <h2 className="md:text-xl font-bold">Order Summary</h2>
