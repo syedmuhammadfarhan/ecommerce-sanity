@@ -106,7 +106,7 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
             </div>
           </div>
           {/* 3rd column of solo product page */}
-          <div className="border border-slate-400  h-fit rounded-lg mb-2 lg:mb-0 mt-2 lg:mt-0 p-2 mx-2">
+          <div className="border border-slate-400  h-fit w-full rounded-lg mb-2 lg:mb-0 mt-2 lg:mt-0 p-2 mx-2">
             <div className="text-lg md:text-2xl font-extrabold mb-1">
               {data[0].title}
             </div>

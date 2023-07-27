@@ -27,7 +27,7 @@ export default async function page({
                   passHref
                   // className="border border-slate-400"
                 >
-                  <div className="border lg:w-60 lg:h-64 rounded-lg overflow-hidden">
+                  <div className="lg:w-60 lg:h-64 rounded-lg overflow-hidden">
                     <Image
                       src={urlForImage(items.image[0]).url()}
                       alt="productimage"
@@ -61,7 +61,7 @@ export default async function page({
               passHref
               // className="border border-slate-400 rounded-lg overflow-hidden"
             >
-              <div className="border lg:w-60 lg:h-64 rounded-lg overflow-hidden">
+              <div className="lg:w-60 lg:h-64 rounded-lg overflow-hidden">
                 <Image
                   src={urlForImage(items.image[0]).url()}
                   alt="productimage"
