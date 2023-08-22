@@ -1,6 +1,6 @@
 # Full Stack E-Commerce Website (Hackathon-1)
 
-This is a Full satck Ecommerce website built for the learning purpose ofthe state of the art Technologies.
+This is a full-stack e-commerce website built for the learning purpose of state-of-the art Technologies.
 
 ## Stacks
 <p align="left">
@@ -21,14 +21,14 @@ This is a Full satck Ecommerce website built for the learning purpose ofthe stat
 
 ### Link
 
-Website is deployed in vercel.
+The website is deployed in Vercel.
 - [Live URL](https://ecommerce-sanity-sage.vercel.app/)
 
 
 ### Screenshot
 
 ![Screenshot of homepage of Dine Market e-commerce](/public/Screenshot.png)
-Search bar is for the styling purpose only
+The search bar is for styling purpose only
 
 
 
