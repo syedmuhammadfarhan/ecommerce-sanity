@@ -104,7 +104,7 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
             </div>
           </div>
           {/* 3rd column of solo product page */}
-          <div className="border border-slate-400  h-fit w-full rounded-lg mb-2 lg:mb-0 mt-2 lg:mt-0 p-2 mx-2">
+          <div className="border border-slate-400 h-fit lg:w-full rounded-lg mb-2 lg:mb-0 mt-2 lg:mt-0 p-2 mx-2">
             <div className="text-lg md:text-2xl font-extrabold mb-1">
               {data[0].title}
             </div>
@@ -137,7 +137,7 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
                 >
                   <AiOutlineMinus size={20} color="red" />
                 </span>
-                <span className="w-full px-4 flex items-center font-bold select-none text-black border-slate-400 border-y">
+                <span className="w-full px-4 flex items-center justify-center font-bold select-none text-black border-slate-400 border-y">
                   {quantity}
                 </span>
                 <span
