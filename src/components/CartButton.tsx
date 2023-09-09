@@ -5,30 +5,28 @@ import { FiShoppingCart } from "react-icons/fi";
 
 export type CookiesUid = string | undefined;
 
-export default async function CartButton({
+export default function CartButton({
   res,
   cookiesuid,
 }: {
   res: cartItems[];
   cookiesuid: CookiesUid;
 }) {
-  let qArray = res
+  const qArray = res
     .filter((items) => items.user_id === cookiesuid)
     .map((items) => items.quantity);
-
-  let qSum = 0;
-
-  for (let i = 0; i < qArray.length; i++) {
-    qSum += qArray[i];
-  }
+  const qSum = qArray.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0
+  );
   return (
     <div>
       <Link href="/cart" passHref>
         <div className="relative w-11 h-11 rounded-full bg-gray-200 justify-center items-center hidden lg:flex">
-          <div className="absolute top-0 right-0 w-4 h-4 rounded-full bg-red-500 text-xs text-center place-items-center text-white hover:scale-105">
+          <div className="absolute top-0 right-0 w-4 h-4 rounded-full bg-red-500 text-[0.65rem] text-center place-items-center text-white hover:scale-105">
             {qSum}
           </div>
-          <FiShoppingCart size={20} className="hover:scale-105" />
+          <FiShoppingCart size={20} className="hover:scale-110" />
         </div>
       </Link>
     </div>

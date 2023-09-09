@@ -16,9 +16,10 @@ type CookiesUid = {
 export default async function Cart({ cookiesuid }: CookiesUid) {
   const { refresh } = useRouter();
   const res: cartItems[] = await getData();
+  const resFilter = res.filter((items) => items.user_id === cookiesuid);
 
   const handleToast = () => {
-    toast.error("Successfully Deleted!");
+    toast.error("Successfully Deleted!",{duration:1000});
   };
 
   // delete api handle
@@ -45,26 +46,20 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
   // del api end
 
   // subtotal
-  let PQ = res
-    .filter((items) => items.user_id === cookiesuid)
-    .map((items) => items.price * items.quantity);
+  let pqArray = resFilter.map((items) => items.price * items.quantity);
 
-  let subTotalofPQ = 0;
-
-  for (let i = 0; i < PQ.length; i++) {
-    subTotalofPQ += PQ[i];
-  }
+  const subTotalofPQ = pqArray.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0
+  );
 
   // items in cart
-  let qArray = res
-    .filter((items) => items.user_id === cookiesuid)
-    .map((items) => items.quantity);
+  const qArray = resFilter.map((items) => items.quantity);
 
-  let qSum = 0;
-
-  for (let i = 0; i < qArray.length; i++) {
-    qSum += qArray[i];
-  }
+  const qSum = qArray.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0
+  );
 
   // checkout button handle
   const handleCheckout = async () => {
@@ -73,7 +68,7 @@ export default async function Cart({ cookiesuid }: CookiesUid) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       cache: "no-cache",
-      body: JSON.stringify(res),
+      body: JSON.stringify(resFilter),
     });
 
     const data = await response.json();

@@ -59,8 +59,8 @@ const Footer = () => {
         <div className="border-t-2 border-black flex flex-col h-52 lg:h-20 lg:flex-row  justify-between py-6 mt-6 px-2 text-sm md:text-lg font-bold">
           <p>Copyright © 2023 Dine Market</p>
           <p>
-            <span className="text-slate-500">Design by</span>{" "}
-            <span>Weird Design Studio</span>
+            <span className="text-slate-500">Design by: </span>{" "}
+            <span>Farhan Studio</span>
           </p>
           <p>
             <span className="text-slate-500">Github ID:</span>{" "}

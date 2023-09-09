@@ -16,15 +16,14 @@ export default function Hamburger({
 }) {
   const [mobNav, setMobNav] = useState(false);
 
-  let qArray = res
+  const qArray = res
     .filter((items) => items.user_id === cookiesuid)
     .map((items) => items.quantity);
 
-  let qSum = 0;
-
-  for (let i = 0; i < qArray.length; i++) {
-    qSum += qArray[i];
-  }
+  const qSum = qArray.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0
+  );
 
   return (
     <div>

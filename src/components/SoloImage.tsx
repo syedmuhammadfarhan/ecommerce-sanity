@@ -15,23 +15,21 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
   const [size, setSize] = useState("");
   const { refresh } = useRouter();
 
-  
-
   const handleMouseEnter = (i: number) => {
     setIndex(i);
   };
 
   const setBg = (items_size: string) =>
     size === items_size ? "bg-black text-white" : "bg-white text-black";
-  
+
   const handleSize = (size: string) => {
     setSize(size);
   };
 
-
-
   const quantityIncrement = () => {
-    setQuantity(quantity + 1);
+    if (quantity < 10) {
+      setQuantity(quantity + 1);
+    }
   };
   const quantityDecrement = () => {
     if (quantity > 1) {
@@ -40,7 +38,7 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
   };
 
   const handleToast = () => {
-    toast.success("Successfully Added!");    
+    toast.success("Successfully Added!", { duration: 1000 });
   };
 
   const handleAddToCart = async () => {
@@ -132,21 +130,21 @@ export default function SoloImage({ data }: { data: IProduct[] }) {
 
             <div className="flex justify-between items-center gap-x-8  mb-8">
               <div className="text-sm font-bold">Quantity:</div>
-              <div className="flex">
+              <div className="flex w-32 justify-between">
                 <span
-                  className="border border-slate-400 rounded-s-lg px-2 flex items-center hover:bg-black hover:text-white font-extrabold cursor-pointer select-none hover:scale-90"
+                  className="border border-slate-400 w-full rounded-s-lg px-2 flex items-center hover:bg-black hover:text-white font-extrabold cursor-pointer select-none hover:scale-90 border-r-0"
                   onClick={quantityDecrement}
                 >
-                  <AiOutlineMinus size={20} color="red"/>
+                  <AiOutlineMinus size={20} color="red" />
                 </span>
-                <span className="border border-black px-4 flex items-center font-bold select-none text-white bg-black ">
+                <span className="w-full px-4 flex items-center font-bold select-none text-black border-slate-400 border-y">
                   {quantity}
                 </span>
                 <span
-                  className="border border-slate-400 rounded-e-lg px-2 flex items-center hover:bg-black hover:text-white font-bold cursor-pointer select-none hover:scale-90"
+                  className="w-full border border-slate-400  rounded-e-lg px-2 flex items-center hover:bg-black hover:text-white font-bold cursor-pointer select-none hover:scale-90 border-l-0"
                   onClick={quantityIncrement}
                 >
-                  <AiOutlinePlus size={20} color="green"/>
+                  <AiOutlinePlus size={20} color="green" />
                 </span>
               </div>
             </div>
